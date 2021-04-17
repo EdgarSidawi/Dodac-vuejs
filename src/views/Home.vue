@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-   <h1>HomePage</h1>
-   <p class="red white--text ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate praesentium dolor odio impedit nemo distinctio debitis id quae, nobis nihil eligendi porro ea dolores ducimus aliquam ratione alias harum quaerat?</p>
-    <h2>Massive text</h2>
+    <h1>HomePage</h1>
+    <v-btn class="pink white--text" elevation="2"
+    >Click Me
+    </v-btn>
+    <v-btn>Hi there</v-btn>
+    <v-btn>Hi there</v-btn>
   </div>
 </template>
 
