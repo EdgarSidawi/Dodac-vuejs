@@ -1,7 +1,7 @@
 <template>
-    <div>
-        
-    </div>
+    <nav>
+        <v-toolbar ></v-toolbar>
+    </nav>
 </template>
 
 <script>
