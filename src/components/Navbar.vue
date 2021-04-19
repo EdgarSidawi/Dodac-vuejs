@@ -11,7 +11,7 @@
             </v-toolbar-title>
         </v-app-bar>
 
-        <v-navigation-drawer app class="blue lighten-1" v-model="drawer" dark>
+        <v-navigation-drawer app class="indigo lighten-1" v-model="drawer" dark>
             <v-list>
                 <v-list-item >
                     <v-list-item-avatar>
@@ -31,19 +31,15 @@
 
             <v-divider></v-divider>
 
-            <v-list-item-group>
-            <div v-for="(link,i) in links" :key="i">
-                <router-link :to="link.route" >
-                    <v-list-item >
+            <v-list-item-group color="yellow lighten-3">
+                    <v-list-item v-for="(link,i) in links" :key="i" router :to="link.route">
                         <v-list-item-icon>
-                            <v-icon v-text="link.icon">mdi-account-group </v-icon>
+                            <v-icon>{{ link.icon }}</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                            <v-list-item-title v-text="link.text"></v-list-item-title>
+                            <v-list-item-title>{{ link.text }} </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
-                </router-link>
-                </div>
             </v-list-item-group>
 
             
@@ -61,7 +57,7 @@ export default {
            links:[
                {icon: 'mdi-account-group', text:"Patient", route:"/"},
                {icon: "mdi-account", text:"Staff", route:"/about"},
-               {icon: "mdi-star", text:"Realtime Monitoring", route:"/monitoring"}
+               {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitoring"}
            ]
        }
     }
