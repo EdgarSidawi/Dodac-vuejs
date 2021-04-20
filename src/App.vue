@@ -3,7 +3,7 @@
     <Navbar/>
 
     <v-main>
-      <v-container fluid>
+      <v-container class="mx-4" fluid>
         <router-view></router-view>
       </v-container>
     </v-main>

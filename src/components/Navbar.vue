@@ -56,8 +56,8 @@ export default {
            drawer:false,
            links:[
                {icon: 'mdi-account-group', text:"Patient", route:"/"},
-               {icon: "mdi-account", text:"Staff", route:"/about"},
-               {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitoring"}
+               {icon: "mdi-account", text:"Staff", route:"/staff"},
+               {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitor"}
            ]
        }
     }
