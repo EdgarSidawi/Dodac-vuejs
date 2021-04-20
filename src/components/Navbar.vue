@@ -13,7 +13,7 @@
 
         <v-navigation-drawer app class="indigo lighten-1" v-model="drawer" dark>
             <v-list>
-                <v-list-item >
+                <v-list-item>
                     <v-list-item-avatar>
                         <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                     </v-list-item-avatar>

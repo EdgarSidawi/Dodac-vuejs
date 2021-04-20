@@ -1,5 +1,7 @@
 <template>
     <div>
-        <h1>Realtime Monitoring</h1>
+        <h3 class="grey--text text-center">Patients Portal</h3>
+        <v-divider></v-divider>
+
     </div>
 </template>

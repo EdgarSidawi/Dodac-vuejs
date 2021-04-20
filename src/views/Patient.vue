@@ -1,7 +1,9 @@
 <template>
   <div class="patient">
-    <h1>HomePage!</h1>
+    <h3 class="grey--text text-center">Patients Portal</h3>
+    <v-divider ></v-divider>
 
+    
 
   </div>
 </template>
