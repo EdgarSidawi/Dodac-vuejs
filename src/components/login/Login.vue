@@ -60,7 +60,7 @@ export default {
                     'username':'',
                     'password':''
                 },
-                isLoading:false,
+                isLoading: false,
                 nameRules: [ v => !!v || 'Name is required']
             }
         },
@@ -68,10 +68,9 @@ export default {
             login(){
                 if(this.form.username === "" && this.form.password === ""){
                     console.log('forms are empty');
-                    this.nameRules;
                 }else{
-                    console.log('logging in')
-                    this.form.isLoading = true;
+                    console.log('logging in' ,this.isLoading)
+                    this.isLoading = true;
                 }
             }
         }

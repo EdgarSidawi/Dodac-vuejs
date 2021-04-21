@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-const users = {
+const auth = {
     state: {
         isLoggedIn:false,
 
+    },
+    getters: {
+        isLoggedIn: (state) =>  state.isLoggedIn
     },
     mutations: {
         
@@ -13,4 +16,4 @@ const users = {
     }
 }
 
-export default users;
+export default auth;
