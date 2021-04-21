@@ -13,25 +13,67 @@
         <v-layout>
             <v-flex>
                 <v-form>
-                    <v-card max-width="400" class="mx-auto pb-4" shaped loading="purple" loader-height="10">
+                    <v-card max-width="400" 
+                        class="mx-auto pb-4" 
+                        shaped
+                        :loading="isLoading"
+                        loader-height="10"
+                        >
                         <v-card-title class="blue text-center">
                             <h3 class="text-center mx-auto white--text">
                                 Login Form
                             </h3> 
                         </v-card-title>
-                        <v-card-text>
-                            <v-text-field label="username" prepend-icon="mdi-account"></v-text-field>
-                            <v-text-field label="password" prepend-icon="mdi-account-lock"></v-text-field>
+                        <v-card-text class="pt-1" >
+                            <v-text-field 
+                                v-model="form.username" 
+                                :rules="nameRules"
+                                label="username" 
+                                prepend-icon="mdi-account" 
+                                >
+                            </v-text-field>
+                            <v-text-field 
+                                v-model="form.password" 
+                                :rules="nameRules"
+                                label="password" 
+                                prepend-icon="mdi-account-lock"
+                                >
+                            </v-text-field>
                         </v-card-text>
-                        <v-card-action class="px-3">
-                            <v-btn rounded class="blue white--text">
-                                Login
+                        <v-card-actions class="px-10">
+                            <v-btn rounded class="blue white--text caption" @click.stop="login">
+                            Login
                             </v-btn>
-                        </v-card-action>
-
+                        </v-card-actions>
                     </v-card>
                 </v-form>
             </v-flex>
         </v-layout>
     </v-container>
 </template>
+
+<script>
+export default {
+        data() {
+            return{
+                form: {
+                    'username':'',
+                    'password':''
+                },
+                isLoading:false,
+                nameRules: [ v => !!v || 'Name is required']
+            }
+        },
+        methods: {
+            login(){
+                if(this.form.username === "" && this.form.password === ""){
+                    console.log('forms are empty');
+                    this.nameRules;
+                }else{
+                    console.log('logging in')
+                    this.form.isLoading = true;
+                }
+            }
+        }
+}
+</script>
