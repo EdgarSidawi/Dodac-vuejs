@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <div>
+    <div v-if="!login">
       <Login/>
     </div>
 
-    <div v-if="!login">
+    <div v-if="login">
     <Navbar />
     <v-main>
       <v-container class="mx-4" fluid>
@@ -27,7 +27,7 @@ export default {
   },
 
   data: () => ({
-    login: true
+    login: false
   }),
 };
 </script>

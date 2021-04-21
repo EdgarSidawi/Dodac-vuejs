@@ -13,7 +13,7 @@
         <v-layout>
             <v-flex>
                 <v-form>
-                    <v-card max-width="400" class="mx-auto pb-4" shaped>
+                    <v-card max-width="400" class="mx-auto pb-4" shaped loading="purple" loader-height="10">
                         <v-card-title class="blue text-center">
                             <h3 class="text-center mx-auto white--text">
                                 Login Form
