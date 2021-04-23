@@ -1,9 +1,10 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 const auth = {
+    namespaced: true,
     state: {
-        isLoggedIn:false,
-
+        here: 'i am here oooooooooo',
+        isLoggedIn: false,
     },
     getters: {
         isLoggedIn: (state) =>  state.isLoggedIn

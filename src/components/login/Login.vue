@@ -27,16 +27,17 @@
                         <v-card-text class="pt-1" >
                             <v-text-field 
                                 v-model="form.username" 
-                                :rules="nameRules"
+                                :rules="usernameRules"
                                 label="username" 
                                 prepend-icon="mdi-account" 
                                 >
                             </v-text-field>
                             <v-text-field 
                                 v-model="form.password" 
-                                :rules="nameRules"
+                                :rules="passwordRules"
                                 label="password" 
                                 prepend-icon="mdi-account-lock"
+                                type="password"
                                 >
                             </v-text-field>
                         </v-card-text>
@@ -53,6 +54,8 @@
 </template>
 
 <script>
+import { mapState} from 'vuex'
+
 export default {
         data() {
             return{
@@ -61,13 +64,25 @@ export default {
                     'password':''
                 },
                 isLoading: false,
-                nameRules: [ v => !!v || 'Name is required']
+                usernameRules: [ v => !!v || 'Username is required'],
+                passwordRules: [ v => !!v || 'Password is required']
+            }
+        },
+        computed: {
+            ...mapState('auth/',['here']),
+
+            stateTest(){
+                return this.$store.state.string
             }
         },
         methods: {
             login(){
-                if(this.form.username === "" && this.form.password === ""){
+                if(this.form.username === "" || this.form.password === ""){
                     console.log('forms are empty');
+                    console.log(this.$store.state.auth.isLoggedIn)
+                    console.log(this.$store.state.auth.here)
+                    console.log(this.here)
+    
                 }else{
                     console.log('logging in' ,this.isLoading)
                     this.isLoading = true;
