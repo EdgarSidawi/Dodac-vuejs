@@ -3,7 +3,6 @@
 const auth = {
     namespaced: true,
     state: {
-        here: 'i am here oooooooooo',
         isLoggedIn: false,
     },
     getters: {

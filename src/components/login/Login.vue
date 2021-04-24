@@ -61,7 +61,8 @@ export default {
             return{
                 form: {
                     'username':'',
-                    'password':''
+                    'password':'',
+                    'errror': ''
                 },
                 isLoading: false,
                 usernameRules: [ v => !!v || 'Username is required'],
@@ -69,19 +70,14 @@ export default {
             }
         },
         computed: {
-            ...mapState('auth/',['here']),
+            ...mapState('auth',['isLoggedIn']),
 
-            stateTest(){
-                return this.$store.state.string
-            }
         },
         methods: {
             login(){
                 if(this.form.username === "" || this.form.password === ""){
                     console.log('forms are empty');
-                    console.log(this.$store.state.auth.isLoggedIn)
-                    console.log(this.$store.state.auth.here)
-                    console.log(this.here)
+                    
     
                 }else{
                     console.log('logging in' ,this.isLoading)
