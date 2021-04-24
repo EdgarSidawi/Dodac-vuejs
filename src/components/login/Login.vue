@@ -60,10 +60,10 @@ export default {
         data() {
             return{
                 form: {
-                    'username':'',
-                    'password':'',
-                    'errror': ''
+                    username:'',
+                    password:'',
                 },
+                error: '',
                 isLoading: false,
                 usernameRules: [ v => !!v || 'Username is required'],
                 passwordRules: [ v => !!v || 'Password is required']
@@ -77,11 +77,13 @@ export default {
             login(){
                 if(this.form.username === "" || this.form.password === ""){
                     console.log('forms are empty');
+                    this.error = "username and password cannot be empty"
                     
     
                 }else{
                     console.log('logging in' ,this.isLoading)
                     this.isLoading = true;
+                    this.error=''
                 }
             }
         }
