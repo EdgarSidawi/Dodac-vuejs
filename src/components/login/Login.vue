@@ -25,7 +25,7 @@
                             </h3> 
                         </v-card-title>
                         <v-alert v-if="error !== ''" class="caption ma-2" color="red" text dense outlined  >
-                        <p class="red--text my-auto " align="center"> Username and Password cannot be empty</p>
+                        <p class="red--text my-auto " align="center">{{error}}</p>
                         </v-alert>
                         <v-card-text class="pt-1" >
                             <v-text-field 
@@ -45,7 +45,7 @@
                             </v-text-field>
                         </v-card-text>
                         <v-card-actions class="px-10">
-                            <v-btn rounded class="blue white--text caption" @click.stop="login">
+                            <v-btn rounded class="blue white--text caption" @click.stop="signIn">
                             Login
                             </v-btn>
                         </v-card-actions>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { mapState} from 'vuex'
+import { mapState,mapActions} from 'vuex'
 
 export default {
         data() {
@@ -77,15 +77,13 @@ export default {
 
         },
         methods: {
-            login(){
-                if(this.form.username === "" || this.form.password === ""){
-                    console.log('forms are empty');
-                    this.error = "username and password cannot be empty"
-    
+            ...mapActions('auth',['login']),
+            signIn(){
+                if(this.form.username === "" || this.form.password === ""){                   
+                    this.error = "username and password cannot be empty!"
+
                 }else{
-                    console.log('logging in' ,this.isLoading)
-                    this.isLoading = true;
-                    this.error=''
+                    this.login(this.form)
                 }
             }
         }
