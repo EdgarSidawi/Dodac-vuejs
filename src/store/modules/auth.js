@@ -18,6 +18,7 @@ const auth = {
             localStorage.setItem('firstName', payload.user.firstName)
             localStorage.setItem('lastName', payload.user.lastName)
             localStorage.setItem('role', payload.user.role)
+            localStorage.setItem('email', payload.user.email)
             
             state.isLoggedIn = true
             state.errorMessage = ""

@@ -13,18 +13,24 @@
 
         <v-navigation-drawer app class="indigo lighten-1" v-model="drawer" dark>
             <v-list>
-                <v-list-item>
-                    <v-list-item-avatar>
-                        <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                <v-list-item >
+                    <v-list-item-avatar class="white black--text pa-3 mx-auto" size="60">
+                        {{ initials }}
                     </v-list-item-avatar>
                 </v-list-item>
 
-                <v-list-item >
+                <v-list-item>
                     <v-list-item-content>
-                        <v-list-item-title class="title">
+                        <v-list-item-title>
+                        <h4 class="text-center">
                         {{ user }}
+                        </h4> 
                         </v-list-item-title>
-                        <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
+                        <v-list-item-subtitle>
+                        <p class="text-center">
+                        {{ email }}
+                        </p>
+                        </v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -55,6 +61,8 @@ export default {
        return{
            drawer:false,
            user:'',
+           email:'',
+           initials: '',
            links:[
                {icon: 'mdi-account-group', text:"Patient", route:"/"},
                {icon: "mdi-account", text:"Staff", route:"/staff"},
@@ -64,7 +72,12 @@ export default {
     },
     created() {
        if (this.$store.state.auth.isLoggedIn) {
-            this.user= localStorage.getItem('role') + " " + localStorage.getItem('firstName') + " " + localStorage.getItem('lastName')
+            var firstname = localStorage.getItem('firstName')
+            var lastname = localStorage.getItem('lastName')
+            var role = localStorage.getItem('role')
+            this.user = role + " " + firstname + " " + lastname
+            this.email = localStorage.getItem('email')
+            this.initials = firstname.charAt(0)+lastname.charAt(0)
         }
     }
     
