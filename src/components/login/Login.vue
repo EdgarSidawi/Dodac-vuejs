@@ -83,6 +83,7 @@ export default {
                     this.error = "username and password cannot be empty!"
 
                 }else{
+                    this.error= ""
                     this.login(this.form)
                 }
             }

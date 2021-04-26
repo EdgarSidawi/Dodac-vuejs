@@ -4,6 +4,7 @@ const auth = {
     namespaced: true,
     state: {
         isLoggedIn: false,
+        error: ""
     },
     getters: {
         isLoggedIn: (state) =>  state.isLoggedIn
@@ -19,8 +20,15 @@ const auth = {
             console.log('data ',data)
             axios.post('http://127.0.0.1:8000/api/login',data).then(res => {
                 console.log(res)
-                commit()
-            }).catch(err => {
+                if (res.status === 200) {
+                    console.log('res: ', res.status)
+                }else {
+                    
+                }
+                commit('LOGIN')
+            })
+            .catch(err => {
+                console.log('err: ' + err)
                 console.log('err: ' + err)
             })
         }   
