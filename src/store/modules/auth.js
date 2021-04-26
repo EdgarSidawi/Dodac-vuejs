@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const auth = {
     namespaced: true,
+    
     state: {
         isLoggedIn: false,
         errorMessage: "",
@@ -42,10 +43,8 @@ const auth = {
     },
     actions: {
         login({ commit }, data) {
-            console.log('data ', data)
             commit('ISLOADING')
             axios.post('http://127.0.0.1:8000/api/login',data).then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     commit('LOGIN', res.data)
                 } else if (res.status === 202) {
