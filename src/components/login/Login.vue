@@ -24,8 +24,11 @@
                                 Login Form
                             </h3> 
                         </v-card-title>
-                        <v-alert v-if="error !== ''" class="caption ma-2" color="red" text dense outlined  >
+                        <v-alert v-if="error" class="caption ma-2" color="red" text dense outlined>
                         <p class="red--text my-auto " align="center">{{error}}</p>
+                        </v-alert>
+                        <v-alert v-if="errorMessage" class="caption ma-2" color="red" text dense outlined>
+                        <p class="red--text my-auto " align="center">{{errorMessage}}</p>
                         </v-alert>
                         <v-card-text class="pt-1" >
                             <v-text-field 
@@ -57,7 +60,7 @@
 </template>
 
 <script>
-import { mapState,mapActions} from 'vuex'
+import { mapGetters,mapActions} from 'vuex'
 
 export default {
         data() {
@@ -67,14 +70,12 @@ export default {
                     password:'',
                 },
                 error: '',
-                isLoading: false,
                 usernameRules: [ v => !!v || 'Username is required'],
                 passwordRules: [ v => !!v || 'Password is required']
             }
         },
         computed: {
-            ...mapState('auth',['isLoggedIn']),
-
+            ...mapGetters('auth',['isLoggedIn','errorMessage','isLoading']),
         },
         methods: {
             ...mapActions('auth',['login']),

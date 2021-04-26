@@ -22,7 +22,7 @@
                 <v-list-item >
                     <v-list-item-content>
                         <v-list-item-title class="title">
-                        Doctor John Leider
+                        {{ user }}
                         </v-list-item-title>
                         <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
                     </v-list-item-content>
@@ -54,12 +54,18 @@ export default {
     data: ()=>{
        return{
            drawer:false,
+           user:'',
            links:[
                {icon: 'mdi-account-group', text:"Patient", route:"/"},
                {icon: "mdi-account", text:"Staff", route:"/staff"},
                {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitor"}
            ]
        }
+    },
+    created() {
+       if (this.$store.state.auth.isLoggedIn) {
+            this.user= localStorage.getItem('role') + " " + localStorage.getItem('firstName') + " " + localStorage.getItem('lastName')
+        }
     }
     
 }
