@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <div v-if="!isLoggedIn">
-      <Login/>
+    <div v-if="!isLoggedIn" >
+      <Login v-if="ready"/>
     </div>
 
     <div v-if="isLoggedIn">
@@ -30,7 +30,7 @@ export default {
   data: () => ({
   }),
   computed: {
-    ...mapGetters('auth',['isLoggedIn'])
+    ...mapGetters('auth',['isLoggedIn','ready'])
   },
   methods: {
     ...mapActions('auth',['checkToken'])

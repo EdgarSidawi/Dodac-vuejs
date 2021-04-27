@@ -6,12 +6,14 @@ const auth = {
     state: {
         isLoggedIn: false,
         errorMessage: "",
-        isLoading: false
+        isLoading: false,
+        ready: false
     },
     getters: {
         isLoggedIn: (state) => state.isLoggedIn,
         errorMessage: (state) => state.errorMessage,
-        isLoading: (state) => state.isLoading
+        isLoading: (state) => state.isLoading,
+        ready:(state)=>state.ready
     },
     mutations: {
         LOGIN(state, payload ) {
@@ -60,9 +62,7 @@ const auth = {
         },
 
         checkToken({ commit }) {
-            console.log('i got here')
-            axios.get('/user').then(res => {
-                console.log(res)
+            axios.get('/user').then(() => {
                 commit('CHECKTOKEN')
             })
             .catch(err => console.log(err))
