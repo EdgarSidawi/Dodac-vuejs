@@ -26,6 +26,10 @@ const auth = {
             state.isLoading = false
         },
 
+        CHECKTOKEN(state) {
+            state.isLoggedIn = true;
+        },
+
         ERROR(state, payload) {
             state.errorMessage = payload
             state.isLoading = false
@@ -53,7 +57,16 @@ const auth = {
                     commit('CONNECTIONERROR')
                 }
             })
-        }   
+        },
+
+        checkToken({ commit }) {
+            console.log('i got here')
+            axios.get('/user').then(res => {
+                console.log(res)
+                commit('CHECKTOKEN')
+            })
+            .catch(err => console.log(err))
+        }
     }
 }
 

@@ -18,7 +18,7 @@
 <script>
 import Navbar from './components/Navbar.vue'
 import Login from './components/login/Login'
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
 
 export default {
   name: 'App',
@@ -31,6 +31,14 @@ export default {
   }),
   computed: {
     ...mapGetters('auth',['isLoggedIn'])
+  },
+  methods: {
+    ...mapActions('auth',['checkToken'])
+  },
+  created(){
+    if(localStorage.getItem('token')){
+      this.checkToken()
+    }
   }
 };
 </script>
