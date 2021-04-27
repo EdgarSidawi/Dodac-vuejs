@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="isLoggedIn">
-    <Navbar />
+      <Navbar />
     <v-main>
       <v-container class="mx-4" fluid>
         <router-view></router-view>
