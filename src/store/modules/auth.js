@@ -22,6 +22,7 @@ const auth = {
             localStorage.setItem('lastName', payload.user.lastName)
             localStorage.setItem('role', payload.user.role)
             localStorage.setItem('email', payload.user.email)
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
             
             state.isLoggedIn = true
             state.errorMessage = ""
@@ -47,6 +48,12 @@ const auth = {
         },
 
         SETREADY(state) {
+            state.ready = true
+        },
+
+        LOGOUT(state) {
+            localStorage.clear()
+            state.isLoggedIn = false
             state.ready = true
         }
         
@@ -78,8 +85,11 @@ const auth = {
         setReady({ commit }) {
             commit('SETREADY')
         },
-        logOut({ commit }) {
-            
+        logout({ commit }) {
+            axios.delete('/logout').then((res) => {
+                console.log('res: ',res)
+                commit('LOGOUT')
+            })
         }
     }
 }

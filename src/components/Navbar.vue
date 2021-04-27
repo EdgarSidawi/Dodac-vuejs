@@ -95,9 +95,9 @@ export default {
         }
     },
     methods: {
-        ...mapActions('auth', ['logOut']),
+        ...mapActions('auth', ['logout']),
         signOut(){
-            console.log('signing out')
+            this.logout()
         }
     },
     

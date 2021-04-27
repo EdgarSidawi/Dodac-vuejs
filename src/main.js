@@ -11,6 +11,8 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api"
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   'token'
 )}`;
+console.log('axios : ',axios.defaults.headers.common)
+console.log('token : ',localStorage.getItem('token'))
 
 new Vue({
   router,
