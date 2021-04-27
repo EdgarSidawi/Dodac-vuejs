@@ -62,7 +62,7 @@ const auth = {
         login({ commit }, data) {
             commit('ISLOADING')
             axios.post('/login',data).then(res => {
-                if (res.status === 200) {
+                if (res.status === 200) { 
                     commit('LOGIN', res.data)
                 } else if (res.status === 202) {
                     commit('ERROR', res.data)
@@ -82,9 +82,11 @@ const auth = {
             })
             .catch(() => commit('SETREADY'))
         },
+
         setReady({ commit }) {
             commit('SETREADY')
         },
+
         logout({ commit }) {
             axios.delete('/logout')
             commit('LOGOUT')
