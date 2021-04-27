@@ -86,10 +86,8 @@ const auth = {
             commit('SETREADY')
         },
         logout({ commit }) {
-            axios.delete('/logout').then((res) => {
-                console.log('res: ',res)
-                commit('LOGOUT')
-            })
+            axios.delete('/logout')
+            commit('LOGOUT')
         }
     }
 }
