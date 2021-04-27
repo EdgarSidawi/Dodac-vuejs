@@ -44,6 +44,10 @@ const auth = {
 
         ISLOADING(state) {
             state.isLoading = true
+        },
+
+        SETREADY(state) {
+            state.ready = true
         }
         
     },
@@ -62,10 +66,20 @@ const auth = {
         },
 
         checkToken({ commit }) {
-            axios.get('/user').then(() => {
-                commit('CHECKTOKEN')
+            axios.get('/user').then((res) => {
+                if (res.status === 200) {
+                    commit('CHECKTOKEN')
+                } else {
+                    commit('SETREADY')
+                }
             })
-            .catch(err => console.log(err))
+            .catch(() => commit('SETREADY'))
+        },
+        setReady({ commit }) {
+            commit('SETREADY')
+        },
+        logOut({ commit }) {
+            
         }
     }
 }

@@ -33,11 +33,13 @@ export default {
     ...mapGetters('auth',['isLoggedIn','ready'])
   },
   methods: {
-    ...mapActions('auth',['checkToken'])
+    ...mapActions('auth',['checkToken','setReady'])
   },
   created(){
     if(localStorage.getItem('token')){
       this.checkToken()
+    }else {
+      this.setReady()
     }
   }
 };
