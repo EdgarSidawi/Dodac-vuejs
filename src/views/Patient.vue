@@ -35,7 +35,8 @@
         </v-container>
       </v-form>
     </v-container>
-      <Patients/>
+
+    <Patients/>
     
 
   </div>
@@ -44,7 +45,7 @@
 <script>
 import Patients from "../components/patient/Patients"
 
-import { mapActions } from 'vuex'
+import { mapActions,mapGetters } from 'vuex'
 // @ is an alias to /src
 
 export default {
@@ -60,6 +61,10 @@ export default {
         'lastName': ''
       }
     }
+  },
+  computed:{
+    ...mapGetters('patient', ['patients'])
+
   },
   methods: {
     ...mapActions('patient',['searchPatient']),
