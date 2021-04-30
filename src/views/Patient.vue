@@ -35,18 +35,22 @@
         </v-container>
       </v-form>
     </v-container>
+      <Patients/>
     
 
   </div>
 </template>
 
 <script>
+import Patients from "../components/patient/Patients"
+
 import { mapActions } from 'vuex'
 // @ is an alias to /src
 
 export default {
   name: 'Patient',
   components: {
+    Patients
   },
 
   data() {

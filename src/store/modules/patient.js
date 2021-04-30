@@ -22,8 +22,9 @@ const patient = {
     actions: {
         searchPatient({ commit }, data) {
             axios.post('/searchPatient', data).then(res => {
-                commit();
-            }).catch(err => console.log(err))
+                commit('SETPATIENTS', res.data);
+            })
+                .catch(() => commit('ERROR'))
         }
 
     }
