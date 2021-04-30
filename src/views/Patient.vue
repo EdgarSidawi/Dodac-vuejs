@@ -36,7 +36,7 @@
       </v-form>
     </v-container>
 
-    <Patients/>
+    <Patients :patients="patients"/>
     
 
   </div>
@@ -63,7 +63,7 @@ export default {
     }
   },
   computed:{
-    ...mapGetters('patient', ['patients'])
+    ...mapGetters('patient', ['patients', 'error'])
 
   },
   methods: {

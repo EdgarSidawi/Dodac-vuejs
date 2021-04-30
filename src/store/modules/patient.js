@@ -8,6 +8,8 @@ const patient = {
         error: ""
     },
     getters: {
+        patients: (state) => state.patients,
+        error: (state) => state.error
     },
     mutations: {
         SETPATIENTS(state, payload) {
