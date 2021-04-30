@@ -3,7 +3,7 @@
         <v-layout>
             <v-flex>
                 <v-dialog
-                v-model="dialog"
+                v-model="patientInfo.dialog"
                 max-width="600px"
                 >
                     <v-card>
@@ -12,7 +12,7 @@
                         </v-card-title>
                         <v-card-text>
                             <v-text-field
-                                v-model="firstName"
+                                v-model="form.firstName"
                                 label = "firstName"
                             >
                             </v-text-field>
@@ -27,6 +27,7 @@
 
 <script>
 export default {
+    props:["patientInfo"],
     data(){
         return{
             form: {
@@ -36,7 +37,7 @@ export default {
                 allergies: "",
                 last_disease_diagnosed: ""
             },
-            dialog: false
+            dialog: this.patientInfo.dialog
         }
     }
 }

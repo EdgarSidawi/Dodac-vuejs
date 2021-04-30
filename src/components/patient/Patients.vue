@@ -41,16 +41,33 @@
                 NO PATIENTS RECORD FOUND!!!
             </h1>
         </div>
+
+        <EditPatient :patientInfo ="patientInfo"/>
     </v-container>
 </template>
 
 <script>
+import EditPatient from "./EditPatient"
+
 export default {
     props: ['patients'],
+    components:{
+        EditPatient
+    },
+
+    data(){
+        return{
+            patientInfo:{
+                dialog:false,
+                id: null
+            }
+        }
+    },
     
     methods:{
         editPatient(id){
-            console.log('edit: ', id)
+            this.patientInfo.dialog = true,
+            this.patientInfo.id = id
         },
         deletePatient(id){
             console.log('delete: ', id)
