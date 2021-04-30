@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 // @ is an alias to /src
 
 export default {
@@ -57,9 +58,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions('patient',['searchPatient']),
+
     searchPatient(){
-      console.log('first name :' + this.form.firstName)
-      console.log('last name :' + this.form.lastName)
+      this.searchPatient(this.form)
     }
   },
 }
