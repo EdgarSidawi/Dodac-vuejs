@@ -1,45 +1,60 @@
 <template>
     <v-container  class="mx-1 " fluid>
-        <v-card class="pa-4">
-            <v-layout row wrap >
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">FirstName</div>
-                    <div>my firstname</div>
-                </v-flex>
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">lastName</div>
-                    <div>my lastName</div>
-                </v-flex>
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">Date Of Birth</div>
-                    <div>my DOB</div>
-                </v-flex>
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">Allergies</div>
-                    <div>my allergies</div>
-                </v-flex>
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">Last Disease Diagnosed</div>
-                    <div>my diagnoses</div>
-                </v-flex>
-                <v-flex xs6 sm4 md3 lg2>
-                    <div class="grey--text caption">Last Visited Hospital</div>
-                    <p>my visited hospital</p>
-                </v-flex>   
-                <v-flex xs12 sm12 md12 lg12>
-                    <div>
-                    <v-icon class="blue--text px-2" >mdi-account-edit</v-icon>
-                    <v-icon class="red--text px-2">mdi-delete</v-icon>
-                    </div>
-                </v-flex>   
-            </v-layout>
-                
-        </v-card>
+        <div v-if="patients.length > 0">
+            <v-card class="pa-4 mb-3 text-center" v-for="patient in patients" :key="patient.id">
+                <v-layout row wrap >
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption" small>FirstName</div>
+                        <div>{{ patient.firstName }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption">lastName</div>
+                        <div>{{ patient.lastName }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption">Date Of Birth</div>
+                        <div>{{ patient.dateOfBirth }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption">Allergies</div>
+                        <div>{{ patient.allergies }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption">Last Disease Diagnosed</div>
+                        <div>{{ patient.last_disease_diagnosed }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md3 lg2>
+                        <div class="grey--text caption">Last Visited Hospital</div>
+                        <p>{{ patient.last_visited_hospital }}</p>
+                    </v-flex>   
+                    <v-flex xs12 sm12 md12 lg12>
+                        <div class="text-right">
+                        <v-icon class="blue--text px-2" @click="editPatient(patient.id)" >mdi-account-edit</v-icon>
+                        <v-icon class="red--text px-2" @click="deletePatient(patient.id)">mdi-delete</v-icon>
+                        </div>
+                    </v-flex>   
+                </v-layout>
+            </v-card>
+        </div>
+        <div v-else>
+            <h1 class="red--text text-center mt-8">
+                NO PATIENTS RECORD FOUND!!!
+            </h1>
+        </div>
     </v-container>
 </template>
 
 <script>
 export default {
+    props: ['patients'],
     
+    methods:{
+        editPatient(id){
+            console.log('edit: ', id)
+        },
+        deletePatient(id){
+            console.log('delete: ', id)
+        }
+    }
 }
 </script>

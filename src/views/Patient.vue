@@ -36,7 +36,7 @@
       </v-form>
     </v-container>
 
-    <Patients :patients="patients"/>
+    <Patients :patients="patients.data"/>
     
 
   </div>
