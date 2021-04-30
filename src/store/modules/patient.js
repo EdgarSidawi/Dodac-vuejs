@@ -4,6 +4,7 @@ const patient = {
     namespaced: true,
 
     state: {
+        patients: []
     },
     getters: {
     },
@@ -13,8 +14,9 @@ const patient = {
     actions: {
         searchPatient({ commit }, data) {
             axios.post('/searchPatient', data).then(res => {
-                console.log('patient: ',res);
-            })
+                console.log('patient: ', res);
+                commit();
+            }).catch(err => console.log(err))
         }
 
     }

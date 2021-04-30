@@ -19,13 +19,13 @@
               </v-text-field>
             </v-col>
             <v-col sm="2" class="mt-3 ">
-              <v-btn class="blue lighten-2 white--text" small @click.stop="searchPatient">
+              <v-btn class="blue lighten-2 white--text" small @click.stop="findPatient">
                 <v-icon >mdi-magnify</v-icon>
                 <span>Search</span>
               </v-btn>
             </v-col>
             <v-col sm="2" class="mt-3 ">
-              <v-btn class="green lighten-2 white--text" small @click.stop="searchPatient">
+              <v-btn class="green lighten-2 white--text" small @click.stop="">
                 <v-icon >mdi-plus</v-icon>
                 <span>Create Patient</span>
               </v-btn>
@@ -60,7 +60,7 @@ export default {
   methods: {
     ...mapActions('patient',['searchPatient']),
 
-    searchPatient(){
+    findPatient(){
       this.searchPatient(this.form)
     }
   },
