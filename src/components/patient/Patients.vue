@@ -38,7 +38,7 @@
         </div>
         <div v-else>
             <h1 class="red--text text-center mt-8">
-                NO PATIENTS RECORD FOUND!!!
+                NO PATIENTS RECORD TO DISPLAY!!!
             </h1>
         </div>
 
