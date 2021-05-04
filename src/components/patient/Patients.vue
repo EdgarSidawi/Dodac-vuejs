@@ -29,7 +29,7 @@
                     </v-flex>   
                     <v-flex xs12 sm12 md12 lg12>
                         <div class="text-right">
-                        <v-icon class="blue--text px-2" @click="editPatient(patient.id)" >mdi-account-edit</v-icon>
+                        <v-icon class="blue--text px-2" @click="editPatient(patient)" >mdi-account-edit</v-icon>
                         <v-icon class="red--text px-2" @click="deletePatient(patient.id)">mdi-delete</v-icon>
                         </div>
                     </v-flex>   
@@ -42,13 +42,13 @@
             </h1>
         </div>
 
-        <EditPatient :patientInfo ="patientInfo"/>
+        <EditPatient v-if="patientInfo.edit" :patientInfo ="patientInfo"/>
     </v-container>
 </template>
 
 <script>
 import EditPatient from "./EditPatient"
-import { mapActions } from "vuex"
+import { mapActions,mapGetters } from "vuex"
 
 export default {
     props: ['patients'],
@@ -60,18 +60,22 @@ export default {
         return{
             patientInfo:{
                 dialog:false,
-                id: null
+                patient: null,
+                edit: false
             }
         }
     },
-    
+    computed:{
+        ...mapGetters('patient', ['patient'])
+    },
     methods:{
         ...mapActions('patient',['getPatient']),
 
-        editPatient(id){
+        editPatient(patient){
+            this.patientInfo.edit = true,
             this.patientInfo.dialog = true,
-            this.patientInfo.id = id,
-            this.getPatient(id)
+            this.patientInfo.patient = patient,
+            this.getPatient(patient.id)
         },
         deletePatient(id){
             console.log('delete: ', id)

@@ -6,6 +6,7 @@
                 v-model="patientInfo.dialog"
                 persistent
                 max-width="600px"
+                eager
                 >
                     <v-card>
                         <v-card-title class="red text-center mx-auto">
@@ -41,40 +42,52 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn class="red white--text" @click="patientInfo.dialog=false">Close</v-btn>
-                            <v-btn class="blue white--text">Update</v-btn>
+                            <v-btn class="red white--text" @click="close">Close</v-btn>
+                            <v-btn class="blue white--text" @click="update">Update</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
             </v-flex>
         </v-layout>
-        
+   
+
     </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+// import {mapGetters} from "vuex"
 
 export default {
     props:["patientInfo"],
     data(){
         return{
             form: {
-                firstName: "",
-                lastName: "",
-                dateOfBirth: "",
-                allergies: "",
-                last_disease_diagnosed: ""
+                firstName: this.patientInfo.patient.firstName,
+                lastName: this.patientInfo.patient.lastName,
+                dateOfBirth: this.patientInfo.patient.dateOfBirth,
+                allergies: this.patientInfo.patient.allergies,
+                last_disease_diagnosed: this.patientInfo.patient.last_disease_diagnosed
             },
-            dialog: this.patientInfo.dialog,
+            // dialog: this.patientInfo.dialog,
         }
     },
     computed: {
-        ...mapGetters('patient', ['patient']),
+        // ...mapGetters('patient', ['patient']), 
+        
         role(){
             return localStorage.getItem('role')
         },
 
     },
+    methods: {
+        close(){
+            this.patientInfo.dialog = false,
+            this.patientInfo.edit =false
+        },
+        update(){
+            // console.log(this.patient)
+        }
+    }
+    
 }
 </script>
