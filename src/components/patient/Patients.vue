@@ -70,7 +70,8 @@ export default {
 
         editPatient(id){
             this.patientInfo.dialog = true,
-            this.patientInfo.id = id
+            this.patientInfo.id = id,
+            this.getPatient(id)
         },
         deletePatient(id){
             console.log('delete: ', id)

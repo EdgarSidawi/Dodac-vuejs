@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 
 export default {
     props:["patientInfo"],
@@ -69,6 +70,7 @@ export default {
         }
     },
     computed: {
+        ...mapGetters('patient', ['patient']),
         role(){
             return localStorage.getItem('role')
         },

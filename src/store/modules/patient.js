@@ -10,6 +10,7 @@ const patient = {
     },
     getters: {
         patients: (state) => state.patients,
+        patient: (state) => state.patient,
         error: (state) => state.error
     },
     mutations: {
@@ -20,8 +21,8 @@ const patient = {
         ERROR(state) {
             state.error = "Error connecting to database. Please try again later!"
         },
-        GETPATIENT() {
-            
+        GETPATIENT(state, payload) {
+            state.patient = payload 
         }
 
     },
@@ -33,9 +34,9 @@ const patient = {
                 .catch(() => commit('ERROR'))
         },
         getPatient({ commit }, id) {
-            axios.post(`/patient/${id}`).then(res => {
+            axios.get(`/patient/${id}`).then(res => {
                 console.log(res)
-                commit('GETPATIENT',res)
+                commit('GETPATIENT',res.data.data)
             })
         }
 
