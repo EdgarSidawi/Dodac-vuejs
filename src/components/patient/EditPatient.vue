@@ -4,11 +4,12 @@
             <v-flex>
                 <v-dialog
                 v-model="patientInfo.dialog"
+                persistent
                 max-width="600px"
                 >
                     <v-card>
-                        <v-card-title class="red text-center">
-                            <h3 class="text-center"> Update Patient</h3>
+                        <v-card-title class="red text-center mx-auto">
+                            <h3 class="mx-auto white--text text-center"> Update Patient</h3>
                         </v-card-title>
                         <v-card-text>
                             <v-text-field
@@ -39,8 +40,9 @@
                             </v-text-field>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn>Close</v-btn>
-                            <v-btn>Update</v-btn>
+                            <v-spacer></v-spacer>
+                            <v-btn class="red white--text" @click="patientInfo.dialog=false">Close</v-btn>
+                            <v-btn class="blue white--text">Update</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
@@ -69,6 +71,9 @@ export default {
         role(){
             return localStorage.getItem('role')
         }
+    },
+    created(){
+        
     }
 }
 </script>

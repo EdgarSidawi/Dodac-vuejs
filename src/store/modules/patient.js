@@ -5,6 +5,7 @@ const patient = {
 
     state: {
         patients: [],
+        patient: "",
         error: ""
     },
     getters: {
@@ -18,6 +19,9 @@ const patient = {
 
         ERROR(state) {
             state.error = "Error connecting to database. Please try again later!"
+        },
+        GETPATIENT(state, payload) {
+            
         }
 
     },
@@ -27,6 +31,11 @@ const patient = {
                 commit('SETPATIENTS', res.data.data);
             })
                 .catch(() => commit('ERROR'))
+        },
+        getPatient({ commit }, id) {
+            axios.post(`/patient/${id}`).then(res => {
+
+            })
         }
 
     }
