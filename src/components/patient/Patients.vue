@@ -48,6 +48,7 @@
 
 <script>
 import EditPatient from "./EditPatient"
+import { mapActions } from "vuex"
 
 export default {
     props: ['patients'],
@@ -65,6 +66,8 @@ export default {
     },
     
     methods:{
+        ...mapActions('patient',['getPatient']),
+
         editPatient(id){
             this.patientInfo.dialog = true,
             this.patientInfo.id = id

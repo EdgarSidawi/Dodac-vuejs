@@ -20,7 +20,7 @@ const patient = {
         ERROR(state) {
             state.error = "Error connecting to database. Please try again later!"
         },
-        GETPATIENT(state, payload) {
+        GETPATIENT() {
             
         }
 
@@ -34,7 +34,8 @@ const patient = {
         },
         getPatient({ commit }, id) {
             axios.post(`/patient/${id}`).then(res => {
-
+                console.log(res)
+                commit('GETPATIENT',res)
             })
         }
 

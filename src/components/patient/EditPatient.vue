@@ -53,6 +53,7 @@
 </template>
 
 <script>
+
 export default {
     props:["patientInfo"],
     data(){
@@ -70,10 +71,8 @@ export default {
     computed: {
         role(){
             return localStorage.getItem('role')
-        }
+        },
+
     },
-    created(){
-        
-    }
 }
 </script>
