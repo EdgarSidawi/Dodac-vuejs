@@ -41,6 +41,7 @@
                             </v-text-field>
                         </v-card-text>
                         <v-card-actions>
+                            <h4 v-if="notify" class="green--text ml-16 pl-16">Updated Successfully</h4>
                             <v-spacer></v-spacer>
                             <v-btn class="red white--text" @click="close">Close</v-btn>
                             <v-btn class="blue white--text" @click="update(patientInfo.patient.id)">Update</v-btn>
@@ -68,7 +69,8 @@ export default {
                 dateOfBirth: this.patientInfo.patient.dateOfBirth,
                 allergies: this.patientInfo.patient.allergies,
                 last_disease_diagnosed: this.patientInfo.patient.last_disease_diagnosed
-            }
+            },
+            notify: false
         }
     },
     computed: {        
@@ -89,6 +91,11 @@ export default {
                 id: id
             }
             this.updatePatient(data) 
+
+            this.notify = true
+            setTimeout(() => {
+                this.notify=false
+            }, 2000);
         }
     }
     
