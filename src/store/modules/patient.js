@@ -51,7 +51,7 @@ const patient = {
                     commit('ERROR')
                 })
         },
-        updatePatient({ commit }, data) { console.log('data: ', data)
+        updatePatient({ commit }, data) { 
             axios.put(`/patient/${data.id}`, data.form).then(() => {
                 commit('UPDATEPATIENT',data)
             })
