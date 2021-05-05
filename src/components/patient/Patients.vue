@@ -48,7 +48,7 @@
 
 <script>
 import EditPatient from "./EditPatient"
-import { mapActions,mapGetters } from "vuex"
+import { mapActions} from "vuex"
 
 export default {
     props: ['patients'],
@@ -65,9 +65,7 @@ export default {
             }
         }
     },
-    computed:{
-        ...mapGetters('patient', ['patient'])
-    },
+    
     methods:{
         ...mapActions('patient',['getPatient']),
 

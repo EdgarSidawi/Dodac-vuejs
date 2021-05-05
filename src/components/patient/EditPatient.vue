@@ -23,11 +23,11 @@
                                 label = "Last Name"
                             >
                             </v-text-field>
-                            <v-text-field
-                                v-model="form.dateOfBirth"
-                                label = "Date of Birth"
+                            <div class="caption">Date Of Birth</div>
+                            <v-date-picker 
+                            v-model="form.dateOfBirth"
                             >
-                            </v-text-field>
+                            </v-date-picker>
                             <v-text-field
                                 v-model="form.allergies"
                                 label = "Allergies"
@@ -55,8 +55,6 @@
 </template>
 
 <script>
-// import {mapGetters} from "vuex"
-
 export default {
     props:["patientInfo"],
     data(){
@@ -67,13 +65,10 @@ export default {
                 dateOfBirth: this.patientInfo.patient.dateOfBirth,
                 allergies: this.patientInfo.patient.allergies,
                 last_disease_diagnosed: this.patientInfo.patient.last_disease_diagnosed
-            },
-            // dialog: this.patientInfo.dialog,
+            }
         }
     },
-    computed: {
-        // ...mapGetters('patient', ['patient']), 
-        
+    computed: {        
         role(){
             return localStorage.getItem('role')
         },
@@ -85,7 +80,7 @@ export default {
             this.patientInfo.edit =false
         },
         update(){
-            // console.log(this.patient)
+            console.log(this.form)
         }
     }
     
