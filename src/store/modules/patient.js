@@ -6,12 +6,14 @@ const patient = {
     state: {
         patients: [],
         patient: "",
-        error: ""
+        error: "",
+        loading: false
     },
     getters: {
         patients: (state) => state.patients,
         patient: (state) => state.patient,
-        error: (state) => state.error
+        error: (state) => state.error,
+        loading: (state) => state.loading
     },
     mutations: {
         SETPATIENTS(state, payload) {
@@ -24,23 +26,30 @@ const patient = {
         GETPATIENT(state, payload) {
             state.patient = payload 
         },
-        UPDATEPATIENT(state, payload) { console.log('payload',payload)
+        UPDATEPATIENT(state, payload) { 
             for (var i in state.patients) {
-                console.log('i: ',i, state.patient)
                 if (state.patients[i].id == payload.id) {
                     state.patients[i] = payload.form
                     break
                 }
             }
+        },
+        LOADING(state, payload) {
+            state.loading = payload
         }
 
     },
     actions: {
         searchPatient({ commit }, data) {
-            axios.post('/searchPatient', data).then(res => { 
+            commit('LOADING', true)
+            axios.post('/searchPatient', data).then(res => {
+                commit('LOADING', false)
                 commit('SETPATIENTS', res.data.data);
             })
-                .catch(() => commit('ERROR'))
+                .catch(() => {
+                    commit('LOADING', false)
+                    commit('ERROR')
+                })
         },
         updatePatient({ commit }, data) { console.log('data: ', data)
             axios.put(`/patient/${data.id}`, data.form).then(() => {

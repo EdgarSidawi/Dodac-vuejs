@@ -30,8 +30,12 @@
                 <span>Create Patient</span>
               </v-btn>
             </v-col>
-
+            <v-col v-if="loading" sm="12" md="12" lg="12" class="text-center">
+              <v-btn class="white blue--text mx-auto" depressed :loading="loading">loading</v-btn>
+            </v-col>
           </v-row>
+
+    
         </v-container>
       </v-form>
     </v-container>
@@ -63,7 +67,7 @@ export default {
     }
   },
   computed:{
-    ...mapGetters('patient', ['patients', 'error'])
+    ...mapGetters('patient', ['patients', 'error', 'loading'])
 
   },
   methods: {
