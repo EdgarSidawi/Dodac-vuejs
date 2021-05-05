@@ -36,6 +36,9 @@ const patient = {
         },
         LOADING(state, payload) {
             state.loading = payload
+        },
+        DELETEPATIENT() {
+            
         }
 
     },
@@ -54,6 +57,12 @@ const patient = {
         updatePatient({ commit }, data) { 
             axios.put(`/patient/${data.id}`, data.form).then(() => {
                 commit('UPDATEPATIENT',data)
+            })
+        },
+        deletePatient({ commit }, id) {console.log('id: ',id)
+            axios.delete(`/patient/${id}`).then(res => {
+                console.log('res: ', res)
+                commit('DELETEPATIENT', id)
             })
         }
 

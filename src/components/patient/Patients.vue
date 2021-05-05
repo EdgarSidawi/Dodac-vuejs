@@ -29,8 +29,8 @@
                     </v-flex>   
                     <v-flex xs12 sm12 md12 lg12>
                         <div class="text-right">
-                        <v-icon class="blue--text px-2" @click="editPatient(patient)" >mdi-account-edit</v-icon>
-                        <v-icon class="red--text px-2" @click="deletePatient(patient.id)">mdi-delete</v-icon>
+                        <v-icon class="blue--text px-2" @click="edit(patient)" >mdi-account-edit</v-icon>
+                        <v-icon class="red--text px-2" @click="delete(patient.id)">mdi-delete</v-icon>
                         </div>
                     </v-flex>   
                 </v-layout>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import EditPatient from "./EditPatient"
 
 export default {
@@ -66,13 +67,15 @@ export default {
     },
 
     methods:{
-        editPatient(patient){
+        ...mapActions('patient',['deletePatient']),
+
+        edit(patient){
             this.patientInfo.edit = true,
             this.patientInfo.dialog = true,
             this.patientInfo.patient = patient
         },
-        deletePatient(id){
-            console.log('delete: ', id)
+        delete(id){
+            this.deletePatient(id)
         }
     }
 }
