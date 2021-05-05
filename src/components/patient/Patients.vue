@@ -48,7 +48,6 @@
 
 <script>
 import EditPatient from "./EditPatient"
-import { mapActions} from "vuex"
 
 export default {
     props: ['patients'],
@@ -65,15 +64,12 @@ export default {
             }
         }
     },
-    
-    methods:{
-        ...mapActions('patient',['getPatient']),
 
+    methods:{
         editPatient(patient){
             this.patientInfo.edit = true,
             this.patientInfo.dialog = true,
-            this.patientInfo.patient = patient,
-            this.getPatient(patient.id)
+            this.patientInfo.patient = patient
         },
         deletePatient(id){
             console.log('delete: ', id)

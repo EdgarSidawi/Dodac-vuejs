@@ -43,7 +43,7 @@
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn class="red white--text" @click="close">Close</v-btn>
-                            <v-btn class="blue white--text" @click="update">Update</v-btn>
+                            <v-btn class="blue white--text" @click="update(patientInfo.patient.id)">Update</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
@@ -55,11 +55,14 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
+
 export default {
     props:["patientInfo"],
     data(){
         return{
             form: {
+                id: this.patientInfo.patient.id,
                 firstName: this.patientInfo.patient.firstName,
                 lastName: this.patientInfo.patient.lastName,
                 dateOfBirth: this.patientInfo.patient.dateOfBirth,
@@ -75,12 +78,17 @@ export default {
 
     },
     methods: {
+        ...mapActions('patient',['updatePatient']),
         close(){
             this.patientInfo.dialog = false,
             this.patientInfo.edit =false
         },
-        update(){
-            console.log(this.form)
+        update(id){
+            var data = {
+                form: this.form,
+                id: id
+            }
+            this.updatePatient(data) 
         }
     }
     

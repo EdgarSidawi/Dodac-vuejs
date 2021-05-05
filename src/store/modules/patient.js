@@ -23,6 +23,15 @@ const patient = {
         },
         GETPATIENT(state, payload) {
             state.patient = payload 
+        },
+        UPDATEPATIENT(state, payload) { console.log('payload',payload)
+            for (var i in state.patients) {
+                console.log('i: ',i, state.patient)
+                if (state.patients[i].id == payload.id) {
+                    state.patients[i] = payload.form
+                    break
+                }
+            }
         }
 
     },
@@ -33,10 +42,9 @@ const patient = {
             })
                 .catch(() => commit('ERROR'))
         },
-        getPatient({ commit }, id) {
-            axios.get(`/patient/${id}`).then(res => {
-                console.log(res)
-                commit('GETPATIENT',res.data.data)
+        updatePatient({ commit }, data) { console.log('data: ', data)
+            axios.put(`/patient/${data.id}`, data.form).then(() => {
+                commit('UPDATEPATIENT',data)
             })
         }
 
