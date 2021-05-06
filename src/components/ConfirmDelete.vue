@@ -5,25 +5,25 @@
       persistent
       max-width="290"
     >
-      <v-card>
-        <v-card-title class="headline">
-          Use Google's location service?
+      <v-card shaped>
+        <v-card-title class="red white--text headline">
+          Are you sure you want to delete?
         </v-card-title>
         <v-card-actions>
+          <v-btn
+            color="red darken-1"
+            text
+            @click="confirmDelete.dialog = false"
+          >
+            No
+          </v-btn>
           <v-spacer></v-spacer>
           <v-btn
             color="green darken-1"
             text
-            @click="dialog = false"
+            @click="deleteP(confirmDelete.id)"
           >
-            Disagree
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Agree
+            Yes
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -32,11 +32,23 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+    props: ['confirmDelete'],
     data(){
         return{
-            dialog: false
+            dialog: this.confirmDelete.dialog
+        }
+    },
+    methods: {
+        ...mapActions('patient',['deletePatient']),
+
+        deleteP(id){
+            this.deletePatient(id)
+            this.confirmDelete.dialog = false
         }
     }
 }
+
 </script>

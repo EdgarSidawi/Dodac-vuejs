@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import EditPatient from "./EditPatient"
 import ConfirmDelete from "../ConfirmDelete"
 
@@ -67,21 +66,23 @@ export default {
             },
             confirmDelete: {
                 dialog:false,
-                id: null
+                id: null,
             }
         }
     },
 
     methods:{
-        ...mapActions('patient',['deletePatient']),
-
         editP(patient){
             this.patientInfo.edit = true,
             this.patientInfo.dialog = true,
             this.patientInfo.patient = patient
         },
         deleteP(id){
-            this.deletePatient(id)
+            this.confirmDelete={
+                dialog: true,
+                id: id
+            }
+            // this.deletePatient(id)
         }
     }
 }
