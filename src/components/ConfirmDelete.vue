@@ -30,3 +30,13 @@
     </v-dialog>
   </v-row>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            dialog: false
+        }
+    }
+}
+</script>

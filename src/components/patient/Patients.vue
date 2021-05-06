@@ -43,17 +43,19 @@
         </div>
 
         <EditPatient v-if="patientInfo.edit" :patientInfo ="patientInfo"/>
+        <ConfirmDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete" />
     </v-container>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import EditPatient from "./EditPatient"
+import ConfirmDelete from "../ConfirmDelete"
 
 export default {
     props: ['patients'],
     components:{
-        EditPatient
+        EditPatient,ConfirmDelete
     },
 
     data(){
@@ -61,7 +63,11 @@ export default {
             patientInfo:{
                 dialog:false,
                 patient: null,
-                edit: false
+                edit: false,
+            },
+            confirmDelete: {
+                dialog:false,
+                id: null
             }
         }
     },
