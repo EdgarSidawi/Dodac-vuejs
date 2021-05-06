@@ -1,7 +1,7 @@
 <template>
     <v-container  class="mx-1 " fluid>
         <div v-if="patients.length > 0">
-            <v-card class="pa-4 mb-3 text-center" v-for="patient in patients" :key="patient.id">
+            <v-card class="pa-4 mb-3 text-center" v-for="(patient) in patients" :key="patient.id">
                 <v-layout row wrap >
                     <v-flex xs6 sm4 md3 lg2>
                         <div class="grey--text caption" small>FirstName</div>
@@ -29,8 +29,8 @@
                     </v-flex>   
                     <v-flex xs12 sm12 md12 lg12>
                         <div class="text-right">
-                        <v-icon class="blue--text px-2" @click="edit(patient)" >mdi-account-edit</v-icon>
-                        <v-icon class="red--text px-2" @click="delete(patient.id)">mdi-delete</v-icon>
+                        <v-icon class="blue--text px-2" @click="editP(patient)" >mdi-account-edit</v-icon>
+                        <v-icon class="red--text px-2" @click="deleteP(patient.id)">mdi-delete</v-icon>
                         </div>
                     </v-flex>   
                 </v-layout>
@@ -69,12 +69,12 @@ export default {
     methods:{
         ...mapActions('patient',['deletePatient']),
 
-        edit(patient){
+        editP(patient){
             this.patientInfo.edit = true,
             this.patientInfo.dialog = true,
             this.patientInfo.patient = patient
         },
-        delete(id){
+        deleteP(id){
             this.deletePatient(id)
         }
     }

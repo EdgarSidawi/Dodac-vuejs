@@ -37,8 +37,13 @@ const patient = {
         LOADING(state, payload) {
             state.loading = payload
         },
-        DELETEPATIENT() {
-            
+        DELETEPATIENT(state, payload) {
+             for (var i in state.patients) {
+                if (state.patients[i].id == payload) {
+                    state.patients.splice(i,1)
+                    break
+                }
+            }
         }
 
     },
@@ -59,9 +64,8 @@ const patient = {
                 commit('UPDATEPATIENT',data)
             })
         },
-        deletePatient({ commit }, id) {console.log('id: ',id)
+        deletePatient({ commit }, id) {
             axios.delete(`/patient/${id}`).then(res => {
-                console.log('res: ', res)
                 commit('DELETEPATIENT', id)
             })
         }
