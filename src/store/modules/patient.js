@@ -65,9 +65,12 @@ const patient = {
             })
         },
         deletePatient({ commit }, id) {
-            axios.delete(`/patient/${id}`).then((git) => {
-                commit('DELETEPATIENT', id)
-            })
+            if (confirm("Are you sure you want to delete?")) {
+                
+                axios.delete(`/patient/${id}`).then(() => {
+                    commit('DELETEPATIENT', id)
+                })
+            }
         }
 
     }
