@@ -68,7 +68,8 @@ export default {
                 lastName: this.patientInfo.patient.lastName,
                 dateOfBirth: this.patientInfo.patient.dateOfBirth,
                 allergies: this.patientInfo.patient.allergies,
-                last_disease_diagnosed: this.patientInfo.patient.last_disease_diagnosed
+                last_disease_diagnosed: this.patientInfo.patient.last_disease_diagnosed,
+                last_visited_hospital: "2 seconds ago"
             },
             notify: false
         }

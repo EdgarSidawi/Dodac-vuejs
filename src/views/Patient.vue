@@ -25,7 +25,7 @@
               </v-btn>
             </v-col>
             <v-col sm="2" class="mt-3 ">
-              <v-btn class="green lighten-2 white--text" small @click.stop="">
+              <v-btn class="green lighten-2 white--text" small @click.stop="createPatient">
                 <v-icon >mdi-plus</v-icon>
                 <span>Create Patient</span>
               </v-btn>
@@ -75,6 +75,9 @@ export default {
 
     findPatient(){
       this.searchPatient(this.form)
+    },
+    createPatient(){
+      
     }
   },
 }
