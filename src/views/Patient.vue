@@ -25,7 +25,7 @@
               </v-btn>
             </v-col>
             <v-col sm="2" class="mt-3 ">
-              <v-btn class="green lighten-2 white--text" small @click.stop="createPatient">
+              <v-btn class="green lighten-2 white--text" small @click.stop="create">
                 <v-icon >mdi-plus</v-icon>
                 <span>Create Patient</span>
               </v-btn>
@@ -50,7 +50,6 @@
 import Patients from "../components/patient/Patients"
 
 import { mapActions,mapGetters } from 'vuex'
-// @ is an alias to /src
 
 export default {
   name: 'Patient',
@@ -63,7 +62,8 @@ export default {
       form: {
         'firstName': '',
         'lastName': ''
-      }
+      },
+      createPatient: false
     }
   },
   computed:{
@@ -76,8 +76,8 @@ export default {
     findPatient(){
       this.searchPatient(this.form)
     },
-    createPatient(){
-      
+    create(){
+      this.createPatient = true
     }
   },
 }
