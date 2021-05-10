@@ -41,6 +41,7 @@
     </v-container>
 
     <Patients :patients="patients"/>
+    <CreatePatient @close="closeDialog" :dialog="dialog"/>
     
 
   </div>
@@ -48,13 +49,14 @@
 
 <script>
 import Patients from "../components/patient/Patients"
+import CreatePatient from "../components/patient/CreatePatient"
 
 import { mapActions,mapGetters } from 'vuex'
 
 export default {
   name: 'Patient',
   components: {
-    Patients
+    Patients,CreatePatient
   },
 
   data() {
@@ -63,7 +65,7 @@ export default {
         'firstName': '',
         'lastName': ''
       },
-      createPatient: false
+      dialog: false
     }
   },
   computed:{
@@ -77,7 +79,10 @@ export default {
       this.searchPatient(this.form)
     },
     create(){
-      this.createPatient = true
+      this.dialog = true
+    },
+    closeDialog(){
+      this.dialog = false
     }
   },
 }

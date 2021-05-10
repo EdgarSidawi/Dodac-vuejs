@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <v-dialog
-          v-model="patientInfo.dialog"
+          v-model="dialog"
           persistent
           max-width="600px"
           eager
@@ -34,11 +34,7 @@
               </h4>
               <v-spacer></v-spacer>
               <v-btn class="red white--text" @click="close">Close</v-btn>
-              <v-btn
-                class="blue white--text"
-                @click="update(patientInfo.patient.id)"
-                >Update</v-btn
-              >
+              <v-btn class="blue white--text" @click="create">Update</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -49,6 +45,7 @@
 
 <script>
 export default {
+    props: ["dialog"],
     data (){
         return{
             form: {
@@ -57,8 +54,20 @@ export default {
                 dateOfBirth: "",
                 allergies: "",
                 last_disease_diagnosed: "",
-            }
+            },
+            notify: false
         }
-    }
+    },
+    computed: { 
+        role(){ 
+            return localStorage.getItem('role') 
+            }, 
+        },
+    methods: {
+        close(){
+            this.$emit('close')
+        },
+        create(){}
+    },
 }
 </script>

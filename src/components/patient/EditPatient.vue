@@ -82,6 +82,7 @@ export default {
     },
     methods: {
         ...mapActions('patient',['updatePatient']),
+        
         close(){
             this.patientInfo.dialog = false,
             this.patientInfo.edit =false
@@ -92,7 +93,7 @@ export default {
                 id: id
             }
             this.updatePatient(data) 
-
+    
             this.notify = true
             setTimeout(() => {
                 this.notify=false
