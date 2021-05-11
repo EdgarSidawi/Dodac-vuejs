@@ -34,7 +34,7 @@
               </h4>
               <v-spacer></v-spacer>
               <v-btn class="red white--text" @click="close">Close</v-btn>
-              <v-btn class="blue white--text" @click="create">Create</v-btn>
+              <v-btn class="blue white--text" :disabled="disable" @click="create">Create</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -63,7 +63,14 @@ export default {
     computed: { 
         role(){ 
             return localStorage.getItem('role') 
-            }, 
+            },
+        disable(){
+          if(!this.form.firstName || !this.form.lastName || !this.form.dateOfBirth || !this.form.allergies) {
+            return true
+          }else{
+            return false
+          }
+        } 
         },
     methods: {
         ...mapActions("patient", ["createPatient"]),
@@ -72,7 +79,6 @@ export default {
             this.$emit('close')
         },
         create(){
-          console.log("component: ", this.form)
           this.createPatient(this.form)
         }
     },

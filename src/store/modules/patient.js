@@ -73,8 +73,8 @@ const patient = {
             })
         },
         createPatient({commit}, data) {
-            axios.post('/patient', data).then(res => {
-                commit("CREATEPATIENT", res)
+            axios.post('/patient', data).then(res => { 
+                commit("CREATEPATIENT", res.data.data)
             })
         }
 
