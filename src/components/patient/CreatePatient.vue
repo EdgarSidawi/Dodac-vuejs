@@ -34,7 +34,7 @@
               </h4>
               <v-spacer></v-spacer>
               <v-btn class="red white--text" @click="close">Close</v-btn>
-              <v-btn class="blue white--text" @click="create">Update</v-btn>
+              <v-btn class="blue white--text" @click="create">Create</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex"
+
 export default {
     props: ["dialog"],
     data (){
@@ -64,10 +66,15 @@ export default {
             }, 
         },
     methods: {
+        ...mapActions("patient", ["createPatient"]),
+
         close(){
             this.$emit('close')
         },
-        create(){}
+        create(){
+          console.log("component: ", this.form)
+          this.createPatient(this.form)
+        }
     },
 }
 </script>

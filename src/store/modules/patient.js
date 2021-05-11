@@ -44,6 +44,9 @@ const patient = {
                     break
                 }
             }
+        },
+        CREATEPATIENT(state, payload) {
+            state.patients.unshift(payload)
         }
 
     },
@@ -68,7 +71,13 @@ const patient = {
             axios.delete(`/patient/${id}`).then(() => {
                 commit('DELETEPATIENT', id)
             })
+        },
+        createPatient({commit}, data) {
+            axios.post('/patient', data).then(res => {
+                commit("CREATEPATIENT", res)
+            })
         }
+
 
     }
 }
