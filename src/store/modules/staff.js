@@ -34,7 +34,7 @@ const staff = {
                 }
             }
         },
-        CREATEPATIENT(state, payload) {
+        CREATESTAFF(state, payload) {
             state.staffs.unshift(payload)
         }
     },
@@ -57,7 +57,7 @@ const staff = {
             })
         },
         createStaff({commit}, data) {
-            axios.post('/staff', data).then(res => { console.log(res)
+            axios.post('/user', data).then(res => { 
                 commit("CREATESTAFF", res.data.data)
             })
         }

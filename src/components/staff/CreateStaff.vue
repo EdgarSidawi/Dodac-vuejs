@@ -14,12 +14,12 @@
               </v-text-field>
               <v-text-field v-model="form.username" label="Username">
               </v-text-field>
-              <v-text-field v-model="form.password" label="Password" >
+              <v-text-field v-model="form.password" label="Password" type="password">
               </v-text-field>
-              <v-text-field v-model="form.email" label="Email">
+              <v-text-field v-model="form.email" label="Email" type="email">
               </v-text-field>
-              <v-text-field v-model="form.role" label="Role">
-              </v-text-field>
+              <v-select :items="roles" v-model="form.role">
+              </v-select>
             </v-card-text>
             <v-card-actions>
               <h4 v-if="notify" class="green--text ml-16 pl-16">
@@ -55,7 +55,8 @@ export default {
         password: "",
         role: ""
       },
-      notify: false
+      notify: false,
+      roles: ["Admin", "Nurse", "Doctor"]
     };
   },
   computed: {

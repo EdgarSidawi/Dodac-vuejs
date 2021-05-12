@@ -17,11 +17,11 @@
               </v-text-field>
               <v-text-field v-model="form.lastName" label="Last Name">
               </v-text-field>
-              <v-text-field v-model="form.username"> </v-text-field>
-              <v-text-field v-model="form.email" label="Allergies">
+              <v-text-field v-model="form.username" label="Username"> </v-text-field>
+              <v-text-field v-model="form.email" label="Email" type="email">
               </v-text-field>
-              <v-text-field v-model="form.role" label="Disease Diagnosed">
-              </v-text-field>
+              <v-select :items="roles" v-model="form.role">
+              </v-select>
             </v-card-text>
             <v-card-actions>
               <h4 v-if="notify" class="green--text ml-16 pl-16">
@@ -58,7 +58,9 @@ export default {
         email: this.staffInfo.staff.email,
         role: this.staffInfo.staff.role,
       },
-      notify: false
+      notify: false,
+      roles: ["Admin", "Nurse", "Doctor"]
+
     };
   },
   computed: {
