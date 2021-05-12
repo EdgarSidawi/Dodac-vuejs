@@ -65,7 +65,7 @@ export default {
     methods: {
         ...mapActions("staff", ['searchStaff']),
 
-        findStaff(){ console.log("form: ", this.form)
+        findStaff(){
             this.searchStaff(this.form);
         },
         create(){}
