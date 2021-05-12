@@ -43,18 +43,18 @@
         </div>
 
         <EditPatient v-if="patientInfo.edit" :patientInfo ="patientInfo"/>
-        <ConfirmDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete" />
+        <ConfirmPatientDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete" />
     </v-container>
 </template>
 
 <script>
 import EditPatient from "./EditPatient"
-import ConfirmDelete from "../ConfirmDelete"
+import ConfirmPatientDelete from "./ConfirmPatientDelete"
 
 export default {
     props: ['patients'],
     components:{
-        EditPatient,ConfirmDelete
+        EditPatient,ConfirmPatientDelete
     },
 
     data(){
@@ -62,11 +62,11 @@ export default {
             patientInfo:{
                 dialog:false,
                 patient: null,
-                edit: false,
+                edit: false
             },
             confirmDelete: {
                 dialog:false,
-                id: null,
+                id: null
             }
         }
     },

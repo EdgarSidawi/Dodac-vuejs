@@ -41,14 +41,15 @@ export default {
             dialog: this.confirmDelete.dialog
         }
     },
-    methods: {
-        ...mapActions('patient',['deletePatient']),
-
+    methods: { 
+        ...mapActions('patient',['deletePatient']), 
+        
         deleteP(id){
-            this.deletePatient(id)
-            this.confirmDelete.dialog = false
-        }
+        this.deletePatient(id) 
+        this.confirmDelete.dialog = false 
+        }     
     }
+
 }
 
 </script>
