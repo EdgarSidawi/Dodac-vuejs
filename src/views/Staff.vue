@@ -3,7 +3,7 @@
     <h3 class="grey--text text-center">Staff Portal</h3>
     <v-divider width="300px" class="mx-auto mb-3"></v-divider>
 
-    <v-container class="text-center">
+    <v-container class="text-center mb-4">
       <v-layout wrap row>
         <v-flex v-for="(link, index) in links" :key="index" >
           <router-link :to="link.route" style="text-decoration:none">
