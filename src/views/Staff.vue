@@ -15,6 +15,8 @@
       </v-layout>
     </v-container>
 
+    <router-view></router-view>
+
   </div>
 </template>
 
@@ -23,9 +25,9 @@ export default {
   data () {
     return{
       links: [
-        {text: "Manage Staff", route: "/manageStaff"},
-        {text: "Manage Location", route: "/manageLocation"},
-        {text: "Manage Disease", route: "/manageDisease"}
+        {text: "Manage Staff", route: "/staff/manageStaff"},
+        {text: "Manage Location", route: "/staff/manageLocation"},
+        {text: "Manage Disease", route: "/staff/manageDisease"}
       ]
     }
   }

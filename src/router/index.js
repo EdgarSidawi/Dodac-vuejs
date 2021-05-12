@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Patient from '../views/Patient.vue'
 import Staff from '../views/Staff.vue'
 import Monitor from '../views/Monitor.vue'
+import ManageStaff from '../views/ManageStaff.vue'
+import ManageLocation from '../views/ManageLocation.vue'
+import ManageDisease from '../views/ManageDisease.vue'
 
 Vue.use(VueRouter)
 
@@ -18,19 +22,19 @@ const routes = [
     component: Staff,
     children: [
       {
-        path: '/manageStaff',
+        path: '/staff/manageStaff',
         name: 'ManageStaff',
-        component: ''
+        component: ManageStaff
       },
       {
-        path: '/manageLocation',
+        path: '/staff/manageLocation',
         name: 'ManageLocation',
-        component: ''
+        component: ManageLocation
       },
       {
-        path: '/manageDisease',
+        path: '/staff/manageDisease',
         name: 'ManageDisease',
-        component: ''
+        component: ManageDisease
       },
     ]
   },
