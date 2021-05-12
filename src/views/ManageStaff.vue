@@ -40,13 +40,14 @@
         </v-form>
         </v-container>
 
-        <Staffs/>
+        <Staffs :staffs="staffs"/>
 
     </div>
 </template>
 
 <script>
 import Staffs from "../components/staff/Staffs"
+import {mapActions, mapGetters} from "vuex"
 
 export default {
     components: {Staffs},
@@ -58,8 +59,15 @@ export default {
             }
         }
     },
+    computed: {
+        ...mapGetters("staff", ["staffs","loading"])
+    },
     methods: {
-        findStaff(){},
+        ...mapActions("staff", ['searchStaff']),
+
+        findStaff(){ console.log("form: ", this.form)
+            this.searchStaff(this.form);
+        },
         create(){}
     },
 }
