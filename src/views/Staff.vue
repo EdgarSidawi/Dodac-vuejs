@@ -6,9 +6,11 @@
     <v-container class="text-center">
       <v-layout wrap row>
         <v-flex v-for="(link, index) in links" :key="index" >
-          <v-btn class="red lighten-4 brown--text" >
-          {{ link.text }}
-          </v-btn> 
+          <router-link :to="link.route" style="text-decoration:none">
+            <v-btn class="red lighten-4 brown--text">
+            {{ link.text }}
+            </v-btn> 
+          </router-link>
         </v-flex>
       </v-layout>
     </v-container>
@@ -21,9 +23,9 @@ export default {
   data () {
     return{
       links: [
-        {text: "Manage Staff", route: ""},
-        {text: "Manage Location", route: ""},
-        {text: "Manage Disease", route: ""}
+        {text: "Manage Staff", route: "/manageStaff"},
+        {text: "Manage Location", route: "/manageLocation"},
+        {text: "Manage Disease", route: "/manageDisease"}
       ]
     }
   }

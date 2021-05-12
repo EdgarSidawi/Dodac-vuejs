@@ -16,6 +16,23 @@ const routes = [
     path: '/staff',
     name: 'Staff',
     component: Staff,
+    children: [
+      {
+        path: '/manageStaff',
+        name: 'ManageStaff',
+        component: ''
+      },
+      {
+        path: '/manageLocation',
+        name: 'ManageLocation',
+        component: ''
+      },
+      {
+        path: '/manageDisease',
+        name: 'ManageDisease',
+        component: ''
+      },
+    ]
   },
   {
     path: '/monitor',
