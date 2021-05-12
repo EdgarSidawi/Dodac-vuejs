@@ -40,11 +40,16 @@
         </v-form>
         </v-container>
 
+        <Staffs/>
+
     </div>
 </template>
 
 <script>
+import Staffs from "../components/staff/Staffs"
+
 export default {
+    components: {Staffs},
     data(){
         return{
             form:{
