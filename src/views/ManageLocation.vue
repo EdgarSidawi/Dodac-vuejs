@@ -1,5 +1,8 @@
 <template>
     <div>
-        <h1>Manage Location</h1>
+        <h3 class="text-center mt-7 blue-grey--text">
+         Location
+        </h3>
+        <hr color="grey" />
     </div>
 </template>
