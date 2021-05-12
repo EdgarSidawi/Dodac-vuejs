@@ -21,7 +21,7 @@
                 </v-text-field>
                 </v-col>
                 <v-col sm="2" class="mt-3 ">
-                <v-btn class="blue lighten-2 white--text" small @click.stop="findPatient">
+                <v-btn class="blue lighten-2 white--text" small @click.stop="findStaff">
                     <v-icon >mdi-magnify</v-icon>
                     <span>Search</span>
                 </v-btn>
@@ -57,6 +57,10 @@ export default {
                 lastName:""
             }
         }
-    }
+    },
+    methods: {
+        findStaff(){},
+        create(){}
+    },
 }
 </script>
