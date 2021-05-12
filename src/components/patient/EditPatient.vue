@@ -44,7 +44,7 @@
                             <h4 v-if="notify" class="green--text ml-16 pl-16">Updated Successfully</h4>
                             <v-spacer></v-spacer>
                             <v-btn class="red white--text" @click="close">Close</v-btn>
-                            <v-btn class="blue white--text" @click="update(patientInfo.patient.id)">Update</v-btn>
+                            <v-btn class="blue white--text" :disabled="disable" @click="update(patientInfo.patient.id)">Update</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
@@ -78,11 +78,16 @@ export default {
         role(){
             return localStorage.getItem('role')
         },
-
+        disable(){ 
+            if(!this.form.firstName || !this.form.lastName || !this.form.dateOfBirth || !this.form.allergies) { 
+            return true 
+            }else{ 
+            return false }
+         }
     },
     methods: {
         ...mapActions('patient',['updatePatient']),
-        
+
         close(){
             this.patientInfo.dialog = false,
             this.patientInfo.edit =false

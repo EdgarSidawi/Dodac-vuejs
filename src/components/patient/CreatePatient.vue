@@ -30,11 +30,11 @@
             </v-card-text>
             <v-card-actions>
               <h4 v-if="notify" class="green--text ml-16 pl-16">
-                Updated Successfully
+                Patient Created Successfully!
               </h4>
               <v-spacer></v-spacer>
               <v-btn class="red white--text" @click="close">Close</v-btn>
-              <v-btn class="blue white--text" :disabled="disable" @click="create">Create</v-btn>
+              <v-btn class="green white--text" :disabled="disable" @click="create">Create</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -80,6 +80,16 @@ export default {
         },
         create(){
           this.createPatient(this.form)
+
+          this.notify = true 
+          setTimeout(() => { this.notify=false }, 2000);
+
+          this.form.firstName = ""
+          this.form.lastName= ""
+          this.form.dateOfBirth = ""
+          this.form.allergies = ""
+          this.form.last_disease_diagnosed = ""
+
         }
     },
 }
