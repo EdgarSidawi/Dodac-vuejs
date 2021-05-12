@@ -26,6 +26,17 @@ const staff = {
                 }
             }
         },
+        DELETESTAFF(state, payload) {
+             for (var i in state.staffs) {
+                if (state.staffs[i].id == payload) {
+                    state.staffs.splice(i,1)
+                    break
+                }
+            }
+        },
+        CREATEPATIENT(state, payload) {
+            state.staffs.unshift(payload)
+        }
     },
     actions: {
         searchStaff({ commit }, data) {
@@ -41,10 +52,15 @@ const staff = {
             })
         },
         deleteStaff({ commit }, id) {
-            axios.delete(`/user/${id}`).then((res) => {console.log(res)
+            axios.delete(`/user/${id}`).then(() => {
                 commit('DELETESTAFF', id)
             })
         },
+        createStaff({commit}, data) {
+            axios.post('/staff', data).then(res => { console.log(res)
+                commit("CREATESTAFF", res.data.data)
+            })
+        }
     },
 }
 

@@ -41,22 +41,26 @@
         </v-container>
 
         <Staffs :staffs="staffs"/>
+        <CreateStaff @close="closeDialog" :dialog="dialog"/>
 
     </div>
 </template>
 
 <script>
 import Staffs from "../components/staff/Staffs"
+import CreateStaff from "../components/staff/CreateStaff"
+
 import {mapActions, mapGetters} from "vuex"
 
 export default {
-    components: {Staffs},
+    components: {Staffs,CreateStaff},
     data(){
         return{
             form:{
                 firstName:"",
                 lastName:""
-            }
+            },
+            dialog: false
         }
     },
     computed: {
@@ -68,7 +72,13 @@ export default {
         findStaff(){
             this.searchStaff(this.form);
         },
-        create(){}
+        create(){
+            this.dialog = true
+        },
+        closeDialog(){
+            this.dialog = false 
+        }
+
     },
 }
 </script>

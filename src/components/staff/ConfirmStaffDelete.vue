@@ -34,10 +34,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions("patient", ["deletePatient"]),
+    ...mapActions("staff", ["deleteStaff"]),
 
     deleteP(id) {
-      this.deletePatient(id);
+      this.deleteStaff(id);
       this.confirmDelete.dialog = false;
     }
   }

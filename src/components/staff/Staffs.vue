@@ -74,7 +74,10 @@ export default {
             }
         },
         deleteS(id){
-            console.log(id)
+            this.confirmDelete = {
+                dialog : true,
+                id : id
+            }
         }
     }
 }
