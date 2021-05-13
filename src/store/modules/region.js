@@ -1,7 +1,9 @@
 const region = {
     namespaced: true,
 
-    state: {},
+    state: {
+        regions: []
+    },
     getters: {},
     mutations: {},
     actions: {}
