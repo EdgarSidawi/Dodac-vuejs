@@ -15,13 +15,18 @@
                 </v-flex>
             </v-layout>
         </v-card>
+
+        <EditRegion :regionInfo="regionInfo"/>
     </v-container>
 </template>
 
 <script>
+import EditRegion from "./EditRegion"
+
 import {mapActions,mapGetters} from "vuex"
 
 export default {
+    components:{EditRegion},
     data(){
         return{
             regionInfo:{
