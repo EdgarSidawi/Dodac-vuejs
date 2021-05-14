@@ -4,5 +4,15 @@
          Location
         </h3>
         <hr color="grey" />
+
+        <Regions/>
     </div>
 </template>
+
+<script>
+import Regions from "../components/region/Regions"
+
+export default {
+    components:{Regions}
+}
+</script>
