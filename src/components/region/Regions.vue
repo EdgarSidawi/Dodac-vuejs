@@ -16,7 +16,7 @@
             </v-layout>
         </v-card>
 
-        <EditRegion :regionInfo="regionInfo"/>
+        <EditRegion v-if="regionInfo.edit" :regionInfo="regionInfo"/>
     </v-container>
 </template>
 
@@ -48,7 +48,13 @@ export default {
     methods:{
         ...mapActions("region", ["getRegions"]),
 
-        editR(region){console.log(region.name)},
+        editR(region){
+            this.regionInfo = {
+                dialog: true,
+                region: region,
+                edit: true
+            }
+        },
         deleteR(id){console.log(id)},
         showDistrict(){} 
     },

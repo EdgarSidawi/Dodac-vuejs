@@ -3,7 +3,7 @@
         <v-layout>
             <v-flex>
                 <v-dialog
-                v-model="staffInfo.dialog"
+                v-model="regionInfo.dialog"
                 persistent
                 max-width="600px"
                 eager
@@ -13,7 +13,7 @@
                     <h3 class="mx-auto white--text text-center">Update Staff</h3>
                     </v-card-title>
                     <v-card-text>
-                    <v-text-field v-model="form.username" label="Region"> </v-text-field>
+                    <v-text-field v-model="form.region" label="Region"> </v-text-field>
                     </v-card-text>
                     <v-card-actions>
                     <h4 v-if="notify" class="green--text ml-16 pl-16">
@@ -24,7 +24,7 @@
                     <v-btn
                         class="blue white--text"
                         :disabled="disable"
-                        @click="update(staffInfo.staff.id)"
+                        @click="update(regionInfo.region.id)"
                         >Update</v-btn
                     >
                     </v-card-actions>
@@ -39,19 +39,19 @@
 import { mapActions } from "vuex";
 
 export default {
-  props: ["staffInfo"],
+  props: ["regionInfo"],
   data() {
     return {
       form: {
-        id: this.staffInfo.staff.id,
-        firstName: this.staffInfo.staff.firstName
+        id: this.regionInfo.region.id,
+        region: this.regionInfo.region.name
       },
       notify: false,
     };
   },
   computed: {
     disable() {
-      if (!this.form.firstName) {
+      if (!this.form.region) {
         return true;
       } else {
         return false;
@@ -62,20 +62,20 @@ export default {
     ...mapActions("staff", ["updateStaff"]),
 
     close() {
-      this.staffInfo.dialog = false;
-      this.staffInfo.edit = false;
+      this.regionInfo.dialog = false;
+      this.regionInfo.edit = false;
     },
-    update(id) {
-      var data = {
-        form: this.form,
-        id: id
-      };
+    // update(id) {
+    //   var data = {
+    //     form: this.form,
+    //     id: id
+    //   };
     //   this.updateStaff(data);
-      this.notify = true;
-      setTimeout(() => {
-        this.notify = false;
-      }, 2000);
-    }
+    //   this.notify = true;
+    //   setTimeout(() => {
+    //     this.notify = false;
+    //   }, 2000);
+    // }
   }
 };
 </script>
