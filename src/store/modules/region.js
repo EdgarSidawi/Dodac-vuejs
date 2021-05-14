@@ -17,7 +17,15 @@ const region = {
         },
         LOADING(state, payload) {
             state.loading = payload
-        }
+        },
+        UPDATEREGION(state, payload) { 
+            for (var i in state.regions) {
+                if (state.regions[i].id == payload.id) {
+                    state.regions[i] = payload.form
+                    break
+                }
+            }
+        },
     },
     actions: {
         getRegions({ commit }) {
@@ -28,9 +36,8 @@ const region = {
             })
         },
         updateRegion({ commit }, data) {console.log(data)
-            axios.put(`/region/${data.id}`, data.form).then(res => {
-                console.log(res)
-                commit()
+            axios.put(`/region/${data.id}`, data.form).then(() => {
+                commit("UPDATEREGION", data)
             })
         }
     }

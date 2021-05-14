@@ -13,7 +13,7 @@
                     <h3 class="mx-auto white--text text-center">Update Staff</h3>
                     </v-card-title>
                     <v-card-text>
-                    <v-text-field v-model="form.region" label="Region"> </v-text-field>
+                    <v-text-field v-model="form.name" label="Region"> </v-text-field>
                     </v-card-text>
                     <v-card-actions>
                     <h4 v-if="notify" class="green--text ml-16 pl-16">
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     disable() {
-      if (!this.form.region) {
+      if (!this.form.name) {
         return true;
       } else {
         return false;
