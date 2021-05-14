@@ -44,7 +44,7 @@ export default {
     return {
       form: {
         id: this.regionInfo.region.id,
-        region: this.regionInfo.region.name
+        name: this.regionInfo.region.name
       },
       notify: false,
     };
@@ -59,23 +59,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions("staff", ["updateStaff"]),
+    ...mapActions("region", ["updateRegion"]),
 
     close() {
       this.regionInfo.dialog = false;
       this.regionInfo.edit = false;
     },
-    // update(id) {
-    //   var data = {
-    //     form: this.form,
-    //     id: id
-    //   };
-    //   this.updateStaff(data);
-    //   this.notify = true;
-    //   setTimeout(() => {
-    //     this.notify = false;
-    //   }, 2000);
-    // }
+    update(id) {
+      var data = {
+        form: this.form,
+        id: id
+      };
+      this.updateRegion(data);
+      this.notify = true;
+      setTimeout(() => {
+        this.notify = false;
+      }, 2000);
+    }
   }
 };
 </script>

@@ -4,23 +4,30 @@ const region = {
     namespaced: true,
 
     state: {
-        regions: []
+        regions: [],
+        loading: false
     },
     getters: {
-        regions: (state) => state.regions
+        regions: (state) => state.regions,
+        loading: (state) => state.loading
     },
     mutations: {
         GETREGIONS(state, payload){
             state.regions = payload
+        },
+        LOADING(state, payload) {
+            state.loading = payload
         }
     },
     actions: {
         getRegions({ commit }) {
+            commit("LOADING", true)
             axios.get("/region").then(res => {
+                commit("LOADING", false)
                 commit("GETREGIONS", res.data.data)
             })
         },
-        updateRegion({ commit }, data) {
+        updateRegion({ commit }, data) {console.log(data)
             axios.put(`/region/${data.id}`, data.form).then(res => {
                 console.log(res)
                 commit()
