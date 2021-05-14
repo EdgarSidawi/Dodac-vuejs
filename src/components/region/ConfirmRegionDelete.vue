@@ -37,7 +37,7 @@ export default {
     ...mapActions("region", ["deleteRegion"]),
 
     deleteP(id) {
-      this.deletePatient(id);
+      this.deleteRegion(id);
       this.confirmDelete.dialog = false;
     }
   }

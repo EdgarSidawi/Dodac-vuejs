@@ -26,6 +26,14 @@ const region = {
                 }
             }
         },
+        DELETEREGION(state, payload) {
+             for (var i in state.regions) {
+                if (state.regions[i].id == payload) {
+                    state.regions.splice(i,1)
+                    break
+                }
+            }
+        },
     },
     actions: {
         getRegions({ commit }) {
@@ -39,7 +47,12 @@ const region = {
             axios.put(`/region/${data.id}`, data.form).then(() => {
                 commit("UPDATEREGION", data)
             })
-        }
+        },
+        deleteRegion({ commit }, id) {
+            axios.delete(`/region/${id}`).then(() => {
+                commit('DELETEREGION', id)
+            })
+        },
     }
 
 }

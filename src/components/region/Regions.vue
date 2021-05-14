@@ -17,16 +17,19 @@
         </v-card>
 
         <EditRegion v-if="regionInfo.edit" :regionInfo="regionInfo"/>
+        <ConfirmRegionDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete"/>
+
     </v-container>
 </template>
 
 <script>
 import EditRegion from "./EditRegion"
+import ConfirmRegionDelete from "./ConfirmRegionDelete"
 
 import {mapActions,mapGetters} from "vuex"
 
 export default {
-    components:{EditRegion},
+    components:{EditRegion, ConfirmRegionDelete},
     data(){
         return{
             regionInfo:{
@@ -55,7 +58,12 @@ export default {
                 edit: true
             }
         },
-        deleteR(id){console.log(id)},
+        deleteR(id){
+            this.confirmDelete = {
+                dialog: true,
+                id: id
+            }
+        },
         showDistrict(){} 
     },
 }
