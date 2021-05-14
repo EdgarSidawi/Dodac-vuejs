@@ -35,7 +35,7 @@ const region = {
                 commit("GETREGIONS", res.data.data)
             })
         },
-        updateRegion({ commit }, data) {console.log(data)
+        updateRegion({ commit }, data) {
             axios.put(`/region/${data.id}`, data.form).then(() => {
                 commit("UPDATEREGION", data)
             })
