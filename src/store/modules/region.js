@@ -34,6 +34,9 @@ const region = {
                 }
             }
         },
+        CREATEREGION(state, payload) {
+            state.regions.unshift(payload)
+        }
     },
     actions: {
         getRegions({ commit }) {
@@ -53,6 +56,11 @@ const region = {
                 commit('DELETEREGION', id)
             })
         },
+        createRegion({ commit }, data) {
+            axios.post("/region", data).then(res => {
+                commit("CREATEREGION", res.data.data)
+            })
+        }
     }
 
 }
