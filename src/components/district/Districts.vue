@@ -1,55 +1,53 @@
 <template>
-    <div>
+    <v-container>
         <v-layout>
             <v-flex>
                 <v-dialog
-                v-model="districtInfo.dialog"
-                persistent
-                max-width="600px"
-                eager
+                v-model="districtInfo.dialog" 
+                fullscreen 
+                hide-overlay 
+                transition="dialog-bottom-transition"
                 >
-                    <v-card>
-                        <v-card-title class="red text-center mx-auto">
-                            <h3 class="mx-auto white--text text-center"> Edit Patient</h3>
-                        </v-card-title>
-                        <v-card-text>
-                            <v-text-field
-                                v-model="form.firstName"
-                                label = "First Name"
-                            >
-                            </v-text-field>
-                            <v-text-field
-                                v-model="form.lastName"
-                                label = "Last Name"
-                            >
-                            </v-text-field>
-                            <div class="caption">Date Of Birth</div>
-                            <v-date-picker 
-                            v-model="form.dateOfBirth"
-                            >
-                            </v-date-picker>
-                            <v-text-field
-                                v-model="form.allergies"
-                                label = "Allergies"
-                            >
-                            </v-text-field>
-                            <v-text-field
-                                v-if="role == 'Doctor'"
-                                v-model="form.last_disease_diagnosed"
-                                label = "Disease Diagnosed"
-                            >
-                            </v-text-field>
-                        </v-card-text>
-                        <v-card-actions>
-                            <h4 v-if="notify" class="green--text ml-16 pl-16">Updated Successfully</h4>
-                            <v-spacer></v-spacer>
-                            <v-btn class="red white--text" @click="close">Close</v-btn>
-                            <v-btn class="blue white--text" :disabled="disable" @click="update(patientInfo.patient.id)">Update</v-btn>
-                        </v-card-actions>
+                    <v-toolbar dark color="primary">
+                    <v-btn icon dark @click="districtInfo.dialog = false">
+                        <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                    <v-toolbar-title>Close</v-toolbar-title>
+                    </v-toolbar>
+
+                    <v-card class="pa-4 mb-3 text-center">
+                        <h3 class="pt-2">{{districtInfo.region}}</h3>
+                        <hr class="grey mx-auto mb-7" width="700"/>
+
+                        <v-card class="pa-4 mb-3 mx-10">
+                        <v-layout row wrap justify-space-between>
+                            <v-flex sm6 xs12 md4>
+                                <div class="grey--text caption">name</div>
+                                <div>District name</div>
+                            </v-flex>
+                            <v-flex sm6 xs12 md4 class="pt-4">
+                                <v-icon class="blue--text px-2" @click="editD()">mdi-account-edit</v-icon>
+                                <v-icon class="red--text px-2" @click="deleteD()">mdi-delete</v-icon>
+                            </v-flex>
+                        </v-layout>
+                        </v-card>
                     </v-card>
                 </v-dialog>
             </v-flex>
         </v-layout>
-    </div>
+    </v-container>
 
 </template>
+
+<script>
+export default {
+    props: ["districtInfo"],
+    created(){
+        
+    },
+    methods: {
+        editD(){},
+        deleteD(){}
+    },
+}
+</script>

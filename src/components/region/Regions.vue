@@ -16,7 +16,7 @@
             </v-layout>
         </v-card>
 
-        <districts v-if="districtInfo.dialog" :districtInfo="districtInfo"/>
+        <Districts v-if="districtInfo.dialog" :districtInfo="districtInfo"/>
         <EditRegion v-if="regionInfo.edit" :regionInfo="regionInfo"/>
         <ConfirmRegionDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete"/>
 
@@ -29,10 +29,9 @@ import ConfirmRegionDelete from "./ConfirmRegionDelete"
 import Districts from "../district/Districts"
 
 import {mapActions,mapGetters} from "vuex"
-import Districts from '../district/Districts.vue'
 
 export default {
-    components:{EditRegion, ConfirmRegionDelete, DistrictDistrictss},
+    components:{EditRegion, ConfirmRegionDelete, Districts},
     data(){
         return{
             regionInfo:{
