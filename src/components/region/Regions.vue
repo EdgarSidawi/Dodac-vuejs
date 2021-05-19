@@ -7,7 +7,7 @@
                     <div>{{region.name}}</div>
                 </v-flex>
                 <v-flex sm6 xs12 md4 class="pt-4">
-                    <v-btn class="mr-2 grey lighten-4 purple--text" depressed small @click="showDistrict(region.id)">
+                    <v-btn class="mr-2 grey lighten-4 purple--text" depressed small @click="showDistrict(region.name,region.id)">
                     <span>Show Districts</span>
                     </v-btn>
                     <v-icon class="blue--text px-2" @click="editR(region)">mdi-account-edit</v-icon>
@@ -16,6 +16,7 @@
             </v-layout>
         </v-card>
 
+        <districts v-if="districtInfo.dialog" :districtInfo="districtInfo"/>
         <EditRegion v-if="regionInfo.edit" :regionInfo="regionInfo"/>
         <ConfirmRegionDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete"/>
 
@@ -25,11 +26,13 @@
 <script>
 import EditRegion from "./EditRegion"
 import ConfirmRegionDelete from "./ConfirmRegionDelete"
+import Districts from "../district/Districts"
 
 import {mapActions,mapGetters} from "vuex"
+import Districts from '../district/Districts.vue'
 
 export default {
-    components:{EditRegion, ConfirmRegionDelete},
+    components:{EditRegion, ConfirmRegionDelete, DistrictDistrictss},
     data(){
         return{
             regionInfo:{
@@ -42,6 +45,7 @@ export default {
             },
             districtInfo: {
                 dialog: false,
+                region: "",
                 id: null
             }
         }
@@ -68,8 +72,12 @@ export default {
                 id: id
             }
         },
-        showDistrict(id){
-            console.log(id)
+        showDistrict(region,id){
+            this.districtInfo = {
+                dialog: true,
+                region: region,
+                id: id
+            }
         } 
     },
 }
