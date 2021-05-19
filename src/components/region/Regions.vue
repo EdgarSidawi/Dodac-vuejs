@@ -57,6 +57,7 @@ export default {
     },
     methods:{
         ...mapActions("region", ["getRegions"]),
+        ...mapActions("district", ["getDistricts"]),
 
         editR(region){
             this.regionInfo = {
@@ -77,6 +78,7 @@ export default {
                 region: region,
                 id: id
             }
+            this.getDistricts(id)
         } 
     },
 }
