@@ -7,7 +7,7 @@
                     <div>{{region.name}}</div>
                 </v-flex>
                 <v-flex sm6 xs12 md4 class="pt-4">
-                    <v-btn class="mr-2 grey lighten-4 purple--text" depressed small @click="showDistrict">
+                    <v-btn class="mr-2 grey lighten-4 purple--text" depressed small @click="showDistrict(region.id)">
                     <span>Show Districts</span>
                     </v-btn>
                     <v-icon class="blue--text px-2" @click="editR(region)">mdi-account-edit</v-icon>
@@ -39,6 +39,10 @@ export default {
             confirmDelete:{
                 dialog:false,
                 id: null
+            },
+            districtInfo: {
+                dialog: false,
+                id: null
             }
         }
     },
@@ -64,7 +68,9 @@ export default {
                 id: id
             }
         },
-        showDistrict(){} 
+        showDistrict(id){
+            console.log(id)
+        } 
     },
 }
 </script>
