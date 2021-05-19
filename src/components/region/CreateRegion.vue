@@ -69,6 +69,8 @@ export default {
       setTimeout(() => {
         this.notify = false;
       }, 2000);
+
+      this.form.name = ""
     }
   }
 };

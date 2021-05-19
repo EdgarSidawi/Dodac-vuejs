@@ -10,7 +10,7 @@
                 >
                     <v-card>
                         <v-card-title class="red text-center mx-auto">
-                            <h3 class="mx-auto white--text text-center"> Update Patient</h3>
+                            <h3 class="mx-auto white--text text-center"> Edit Patient</h3>
                         </v-card-title>
                         <v-card-text>
                             <v-text-field
