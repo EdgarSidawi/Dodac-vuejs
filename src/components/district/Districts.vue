@@ -31,7 +31,7 @@
                                 <div>{{ district.name }}</div>
                             </v-flex>
                             <v-flex sm6 xs12 md4 class="pt-4">
-                                <v-icon class="blue--text px-2" @click="editD(district.name)">mdi-account-edit</v-icon>
+                                <v-icon class="blue--text px-2" @click="editD(district)">mdi-account-edit</v-icon>
                                 <v-icon class="red--text px-2" @click="deleteD(district.id)">mdi-delete</v-icon>
                             </v-flex>
                         </v-layout>
@@ -44,18 +44,23 @@
                 </v-dialog>
             </v-flex>
         </v-layout>
+
+        <EditDistrict :districtInf="districtInf"/>
     </v-container>
 
 </template>
 
 <script>
+import EditDistrict from "./EditDistrict"
+
 import {mapState , mapGetters} from "vuex"
 
 export default {
     props: ["districtInfo"],
+    components:{EditDistrict},
     data(){
         return{
-            districtInfo : {
+            districtInf: {
                 dialog: false,
                 district: "",
             }
@@ -68,7 +73,10 @@ export default {
         ...mapState("district", ["getDistricts"]),
 
         editD(district){
-            console.log(district)
+            this.districtInf = {
+                dialog : true,
+                district : district
+            }
         },
         deleteD(id){
             console.log(id)
