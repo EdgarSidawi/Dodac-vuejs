@@ -19,6 +19,12 @@
                         <h3 class="pt-2">{{districtInfo.region}}</h3>
                         <hr class="grey mx-auto mb-7" width="700"/>
 
+                        <div class="text-right mb-4 pr-10">
+                            <v-btn right fab class="yellow mr-8 mt-4" small @click="createD">
+                            <v-icon >mdi-plus</v-icon>
+                        </v-btn>
+                        </div>
+
                         <div class="text-center">
                         <v-btn v-if="loading" class="white blue--text mx-auto" depressed :loading="loading">loading</v-btn>
                         </div>
@@ -63,6 +69,9 @@ export default {
             districtInf: {
                 dialog: false,
                 district: "",
+            },
+            createDistrict: {
+                dialog: false
             }
         }
     },
@@ -80,6 +89,9 @@ export default {
         },
         deleteD(id){
             console.log(id)
+        },
+        createD(){
+            console.log("create District")
         }
     },
 }
