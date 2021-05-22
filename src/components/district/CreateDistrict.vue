@@ -10,7 +10,7 @@
         >
           <v-card>
             <v-card-title class="red text-center mx-auto">
-              <h3 class="mx-auto white--text text-center">Edit District</h3>
+              <h3 class="mx-auto white--text text-center">Create District</h3>
             </v-card-title>
             <v-card-text>
               <v-text-field v-model="form.name" label="District"></v-text-field>
@@ -45,7 +45,7 @@ export default {
         return{ 
             form: { 
                 id: this.districtInf.district.id,
-                name : ""
+                name : this.districtInf.district.name
                 }, 
             notify: false 
             } 
@@ -70,6 +70,8 @@ export default {
         console.log(id)
         console.log(this.districtInf.district.id)
         console.log(this.districtInf.district.name)
+        console.log(this.form.id)
+        console.log(this.form.name)
     //   var data = {
     //     form: this.form,
     //     id: id
