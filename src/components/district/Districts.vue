@@ -51,19 +51,21 @@
             </v-flex>
         </v-layout>
 
-        <EditDistrict :districtInf="districtInf"/>
+        <EditDistrict />
+        <CreateDistrict v-if="createDistrict.dialog" :createDistrict="createDistrict"/>
     </v-container>
 
 </template>
 
 <script>
 import EditDistrict from "./EditDistrict"
+import CreateDistrict from "./CreateDistrict"
 
 import {mapState , mapGetters} from "vuex"
 
 export default {
     props: ["districtInfo"],
-    components:{EditDistrict},
+    components:{EditDistrict, CreateDistrict},
     data(){
         return{
             districtInf: {
@@ -91,7 +93,9 @@ export default {
             console.log(id)
         },
         createD(){
-            console.log("create District")
+            this.createDistrict = {
+                dialog: true
+            }
         }
     },
 }

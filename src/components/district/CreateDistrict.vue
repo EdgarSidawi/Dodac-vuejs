@@ -3,29 +3,35 @@
     <v-layout>
       <v-flex>
         <v-dialog
-          v-model="districtInf.dialog"
+          v-model="createDistrict.dialog"
           persistent
           max-width="600px"
           eager
         >
           <v-card>
             <v-card-title class="red text-center mx-auto">
-              <h3 class="mx-auto white--text text-center">Edit District</h3>
+              <h3 class="mx-auto white--text text-center">Create District</h3>
             </v-card-title>
+            <v-autocomplete  
+            :items="regions" 
+            item-text="name" 
+            item-value="id" 
+            v-model="form.region_id">
+            </v-autocomplete>
             <v-card-text>
               <v-text-field v-model="form.name" label="District"></v-text-field>
             </v-card-text>
             <v-card-actions>
               <h4 v-if="notify" class="green--text ml-16 pl-16">
-                Updated Successfully
+                Created Successfully
               </h4>
               <v-spacer></v-spacer>
               <v-btn class="red white--text" @click="close">Close</v-btn>
               <v-btn
                 class="blue white--text"
                 :disabled="disable"
-                @click="update(districtInf.district.id)"
-                >Update</v-btn
+                @click="create"
+                >Create</v-btn
               >
             </v-card-actions>
           </v-card>
@@ -37,21 +43,23 @@
 
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  props: ["districtInf"],
+  props: ["createDistrict"],
   data (){ 
         return{ 
             form: { 
-                id: this.districtInf.district.id,
-                name : this.districtInf.district.name
+                name : "",
+                region_id: null
                 }, 
-            notify: false 
+            notify: false ,
             } 
         },
 
   computed: {
+    ...mapGetters("region", ["regions"]),
+
     disable() {
       if (!this.form.name) {
         return true;
@@ -64,14 +72,12 @@ export default {
     ...mapActions("district", ["updateDistrict"]),
 
     close() {
-      this.districtInf.dialog = false;
+      this.createDistrict.dialog = false;
     },
-    update(id) {
-        console.log(id)
-        console.log(this.districtInf.district.id)
-        console.log(this.districtInf.district.name)
-        console.log(this.form.id)
+    create() {
         console.log(this.form.name)
+        console.log(this.form.region_id)
+        console.log(this.regions)
     //   var data = {
     //     form: this.form,
     //     id: id
