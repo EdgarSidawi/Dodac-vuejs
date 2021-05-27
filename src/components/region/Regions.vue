@@ -76,7 +76,7 @@ export default {
             this.districtInfo = {
                 dialog: true,
                 region: region,
-                id: id
+                region_id: id
             }
             this.getDistricts(id)
         } 

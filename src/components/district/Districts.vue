@@ -73,7 +73,8 @@ export default {
                 district: "",
             },
             createDistrict: {
-                dialog: false
+                dialog: false,
+                region_id : null
             }
         }
     },
@@ -94,7 +95,8 @@ export default {
         },
         createD(){
             this.createDistrict = {
-                dialog: true
+                dialog: true,
+
             }
         }
     },

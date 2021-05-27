@@ -12,12 +12,6 @@
             <v-card-title class="red text-center mx-auto">
               <h3 class="mx-auto white--text text-center">Create District</h3>
             </v-card-title>
-            <v-autocomplete  
-            :items="regions" 
-            item-text="name" 
-            item-value="id" 
-            v-model="form.region_id">
-            </v-autocomplete>
             <v-card-text>
               <v-text-field v-model="form.name" label="District"></v-text-field>
             </v-card-text>
@@ -43,7 +37,7 @@
 
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   props: ["createDistrict"],
@@ -58,8 +52,6 @@ export default {
         },
 
   computed: {
-    ...mapGetters("region", ["regions"]),
-
     disable() {
       if (!this.form.name) {
         return true;
