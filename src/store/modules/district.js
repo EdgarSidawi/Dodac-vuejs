@@ -17,6 +17,9 @@ const district = {
         },
         LOADING(state, payload) {
             state.loading = payload
+        },
+        CREATEDISTRICT(state, payload) {
+            state.districts.unshift(payload)
         }
     },
     actions: {
@@ -26,6 +29,10 @@ const district = {
                 commit("LOADING", false)
                 commit("GETDISTRICTS", res.data.data)
             })
+        },
+        createDistrict({ commit }, data) {
+            console.log(data)
+            commit
         }
     }
 }

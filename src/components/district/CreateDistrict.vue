@@ -45,7 +45,6 @@ export default {
         return{ 
             form: { 
                 name : "",
-                region_id: null
                 }, 
             notify: false ,
             } 
@@ -61,24 +60,21 @@ export default {
     }
   },
   methods: {
-    ...mapActions("district", ["updateDistrict"]),
+    ...mapActions("district", ["createDistrict"]),
 
     close() {
       this.createDistrict.dialog = false;
     },
     create() {
-        console.log(this.form.name)
-        console.log(this.form.region_id)
-        console.log(this.regions)
-    //   var data = {
-    //     form: this.form,
-    //     id: id
-    //   };
-    //   this.updateDistrict(data);
-    //   this.notify = true;
-    //   setTimeout(() => {
-    //     this.notify = false;
-    //   }, 2000);
+      var data = {
+        form: this.form,
+        region_id: this.createDistrict.region_id
+      };
+      this.createDistrict(data);
+      this.notify = true;
+      setTimeout(() => {
+        this.notify = false;
+      }, 2000);
     }
   }
 };

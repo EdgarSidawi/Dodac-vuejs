@@ -96,7 +96,7 @@ export default {
         createD(){
             this.createDistrict = {
                 dialog: true,
-                region_id: this.districtInf.region_id
+                region_id: this.districtInfo.region_id
             }
         }
     },
