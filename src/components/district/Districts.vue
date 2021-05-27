@@ -52,7 +52,7 @@
         </v-layout>
 
         <EditDistrict />
-        <CreateDistrict v-if="createDistrict.dialog" :createDistrict="createDistrict"/>
+        <CreateDistrict v-if="createDistrictInfo.dialog" :createDistrictInfo="createDistrictInfo"/>
     </v-container>
 
 </template>
@@ -72,7 +72,7 @@ export default {
                 dialog: false,
                 district: "",
             },
-            createDistrict: {
+            createDistrictInfo: {
                 dialog: false,
                 region_id : null
             }
@@ -94,7 +94,7 @@ export default {
             console.log(id)
         },
         createD(){
-            this.createDistrict = {
+            this.createDistrictInfo = {
                 dialog: true,
                 region_id: this.districtInfo.region_id
             }

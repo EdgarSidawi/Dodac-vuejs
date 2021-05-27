@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <v-dialog
-          v-model="createDistrict.dialog"
+          v-model="createDistrictInfo.dialog"
           persistent
           max-width="600px"
           eager
@@ -40,7 +40,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  props: ["createDistrict"],
+  props: ["createDistrictInfo"],
   data (){ 
         return{ 
             form: { 
@@ -63,12 +63,12 @@ export default {
     ...mapActions("district", ["createDistrict"]),
 
     close() {
-      this.createDistrict.dialog = false;
+      this.createDistrictInfo.dialog = false;
     },
     create() {
       var data = {
         form: this.form,
-        region_id: this.createDistrict.region_id
+        region_id: this.createDistrictInfo.region_id
       };
       this.createDistrict(data);
       this.notify = true;

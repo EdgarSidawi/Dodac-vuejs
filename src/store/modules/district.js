@@ -31,8 +31,9 @@ const district = {
             })
         },
         createDistrict({ commit }, data) {
-            console.log(data)
-            commit
+            axios.post(`region/${data.region_id}/district`, data.form).then(res => {
+                commit("CREATEDISTRICT", res.data.data)
+            })
         }
     }
 }
