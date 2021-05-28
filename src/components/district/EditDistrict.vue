@@ -3,14 +3,14 @@
         <v-layout>
             <v-flex>
                 <v-dialog
-                v-model="regionInfo.dialog"
+                v-model="districtInf.dialog"
                 persistent
                 max-width="600px"
                 eager
                 >
                 <v-card>
                     <v-card-title class="red text-center mx-auto">
-                    <h3 class="mx-auto white--text text-center">Edit Region</h3>
+                    <h3 class="mx-auto white--text text-center">Edit District</h3>
                     </v-card-title>
                     <v-card-text>
                     <v-text-field v-model="form.name" label="Region"> </v-text-field>
@@ -24,7 +24,7 @@
                     <v-btn
                         class="blue white--text"
                         :disabled="disable"
-                        @click="update(regionInfo.region.id)"
+                        @click="update()"
                         >Update</v-btn
                     >
                     </v-card-actions>
@@ -34,3 +34,34 @@
         </v-layout>
     </div>
 </template>
+
+<script>
+export default {
+    props: ["districtInf"],
+    data() {
+        return {
+            form: {
+                name: this.districtInf.district.name
+            },
+            notify: false,
+        }
+    },
+    computed: { 
+        disable() { 
+            if (!this.form.name) { 
+                return true; 
+                } else { 
+                    return false; 
+                } 
+            } 
+        },
+    methods: {
+        update(){
+            console.log("updating")
+        },
+        close(){
+            this.districtInf.dialog = false
+        }
+    },
+}
+</script>
