@@ -51,7 +51,7 @@
             </v-flex>
         </v-layout>
 
-        <EditDistrict />
+        <EditDistrict v-if="districtInf.dialog" :districtInf="districtInf"/>
         <CreateDistrict v-if="createDistrictInfo.dialog" :createDistrictInfo="createDistrictInfo"/>
     </v-container>
 
