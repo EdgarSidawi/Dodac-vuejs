@@ -28,6 +28,14 @@ const district = {
                     break
                 }
             }
+        },
+        DELETEDISTRICT(state, payload) {
+             for (var i in state.districts) {
+                if (state.districts[i].id == payload) {
+                    state.districts.splice(i,1)
+                    break
+                }
+            }
         }
     },
     actions: {
@@ -49,7 +57,9 @@ const district = {
             })
         },
         deleteDistrict({ commit }, data) {
-            axios.delete()
+            axios.delete(`region/${data.region_id}/district/${data.id}`).then(() => {
+                commit("DELETEDISTRICT", data.id)
+            })
         }
     }
 }

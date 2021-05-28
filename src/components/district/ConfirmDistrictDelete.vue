@@ -41,7 +41,7 @@ export default {
             region_id: this.confirmDelete.region_id,
             id: id
         }
-      this.deleteRegion(data);
+      this.deleteDistrict(data);
       this.confirmDelete.dialog = false;
     }
   }
