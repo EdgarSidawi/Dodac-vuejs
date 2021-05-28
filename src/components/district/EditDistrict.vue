@@ -24,7 +24,7 @@
                     <v-btn
                         class="blue white--text"
                         :disabled="disable"
-                        @click="update()"
+                        @click="update(districtInf.district.id)"
                         >Update</v-btn
                     >
                     </v-card-actions>
@@ -56,8 +56,17 @@ export default {
             } 
         },
     methods: {
-        update(){
-            console.log("updating")
+        update(id){
+           var data = { 
+               form: this.form, 
+               id: id,
+               region_id: this.districtInf.district.region_id 
+               }; 
+            this.updateDistrict(data); 
+            this.notify =true; 
+            setTimeout(() => { 
+                this.notify = false; 
+            }, 2000);
         },
         close(){
             this.districtInf.dialog = false
