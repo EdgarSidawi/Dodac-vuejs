@@ -36,12 +36,16 @@
 </template>
 
 <script>
+import {mapActions} from "vuex"
+
 export default {
     props: ["districtInf"],
     data() {
         return {
             form: {
-                name: this.districtInf.district.name
+                id: this.districtInf.district.id,
+                name: this.districtInf.district.name,
+                region_id: this.districtInf.district.region_id
             },
             notify: false,
         }
@@ -56,6 +60,8 @@ export default {
             } 
         },
     methods: {
+        ...mapActions("district", ["updateDistrict"]),
+
         update(id){
            var data = { 
                form: this.form, 

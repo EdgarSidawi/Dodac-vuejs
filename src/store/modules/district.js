@@ -20,6 +20,14 @@ const district = {
         },
         CREATEDISTRICT(state, payload) {
             state.districts.unshift(payload)
+        },
+        UPDATEDISTRICT(state, payload) {
+            for (var i in state.districts) {
+                if (state.districts[i].id == payload.id) {
+                    state.districts[i] = payload.form
+                    break
+                }
+            }
         }
     },
     actions: {
@@ -36,8 +44,9 @@ const district = {
             })
         },
         updateDistrict({ commit }, data) {
-            console.log(data)
-            commit()
+            axios.put(`region/${data.region_id}/district/${data.id}`, data.form).then(() => {
+                commit("UPDATEDISTRICT",data)
+            })
         }
     }
 }
