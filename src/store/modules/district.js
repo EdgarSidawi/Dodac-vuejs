@@ -47,6 +47,9 @@ const district = {
             axios.put(`region/${data.region_id}/district/${data.id}`, data.form).then(() => {
                 commit("UPDATEDISTRICT",data)
             })
+        },
+        deleteDistrict({ commit }, data) {
+            axios.delete()
         }
     }
 }

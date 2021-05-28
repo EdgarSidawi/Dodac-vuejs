@@ -53,6 +53,7 @@
 
         <EditDistrict v-if="districtInf.dialog" :districtInf="districtInf"/>
         <CreateDistrict v-if="createDistrictInfo.dialog" :createDistrictInfo="createDistrictInfo"/>
+        <ConfirmDistrictDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete"/>
     </v-container>
 
 </template>
@@ -60,12 +61,13 @@
 <script>
 import EditDistrict from "./EditDistrict"
 import CreateDistrict from "./CreateDistrict"
+import ConfirmDistrictDelete from "./ConfirmDistrictDelete"
 
 import {mapState , mapGetters} from "vuex"
 
 export default {
     props: ["districtInfo"],
-    components:{EditDistrict, CreateDistrict},
+    components:{EditDistrict, CreateDistrict, ConfirmDistrictDelete},
     data(){
         return{
             districtInf: {
@@ -75,7 +77,12 @@ export default {
             createDistrictInfo: {
                 dialog: false,
                 region_id : null
-            }
+            },
+            confirmDelete:{ 
+                dialog:false,
+                region_id: null, 
+                id: null 
+            },
         }
     },
     computed: {
@@ -91,7 +98,11 @@ export default {
             }
         },
         deleteD(id){
-            console.log(id)
+            this.confirmDelete = {
+                dialog : true,
+                region_id: this.districtInfo.region_id,
+                id : id
+            }
         },
         createD(){
             this.createDistrictInfo = {
