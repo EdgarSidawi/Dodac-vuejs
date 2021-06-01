@@ -13,7 +13,7 @@ const auth = {
         isLoggedIn: (state) => state.isLoggedIn,
         errorMessage: (state) => state.errorMessage,
         isLoading: (state) => state.isLoading,
-        ready:(state)=>state.ready
+        ready:(state) => state.ready
     },
     mutations: {
         LOGIN(state, payload ) {
