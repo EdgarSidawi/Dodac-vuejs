@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3 class="text-center mt-7 blue-grey--text">
-         Location
+         Region
         </h3>
         <hr color="grey" />
         <div class="text-right">
