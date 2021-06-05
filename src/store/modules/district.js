@@ -5,11 +5,13 @@ const district = {
 
     state: {
         districts: [],
-        loading: false
+        loading: false,
+        allDistricts: []
     },
     getters: {
         districts: (state) => state.districts,
-        loading: (state) => state.loading
+        loading: (state) => state.loading,
+        allDistricts: (state) => state.allDistricts
     },
     mutations: {
         GETDISTRICTS(state, payload) {
@@ -36,6 +38,9 @@ const district = {
                     break
                 }
             }
+        },
+        GETALLDISTRICTS(state, payload) {
+            state.allDistricts = payload
         }
     },
     actions: {
@@ -59,6 +64,12 @@ const district = {
         deleteDistrict({ commit }, data) {
             axios.delete(`region/${data.region_id}/district/${data.id}`).then(() => {
                 commit("DELETEDISTRICT", data.id)
+            })
+        },
+        getAllDistricts({ commit }) {
+            axios.get("district").then(res => {
+                console.log(res)
+                commit("GETALLDISTRICTS", res.data.data)
             })
         }
     }
