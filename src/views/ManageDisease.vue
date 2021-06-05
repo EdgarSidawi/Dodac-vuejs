@@ -17,7 +17,7 @@
                         <div>{{district.name}}</div>
                     </v-flex>
                     <v-flex sm6 xs12 md4 class="pt-4">
-                        <v-btn class="red--text white mb-2" small @click="showDisease(district.id)">
+                        <v-btn class="red--text white mb-2" small @click="showDisease(district)">
                             <span>Show diseases</span> 
                         </v-btn>
                     </v-flex>
@@ -25,20 +25,20 @@
             </v-card>
         </v-container>
 
-        <Diseases/>
+        <Diseases v-if="this.diseaseInfo.dialog" :diseaseInfo="diseaseInfo"/>
     </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from "vuex"
-import Diseases from "../components/disease/diseases"
+import Diseases from "../components/disease/Diseases"
 
 export default {
     components: {Diseases},
     data() {
         return {
             diseaseInfo: {
-                district_id: null,
+                district: null,
                 dialog: false
             }
         }
@@ -52,8 +52,11 @@ export default {
     methods: {
         ...mapActions("district", ["getAllDistricts"]),
 
-        showDisease(id){
-            console.log(id)
+        showDisease(district){
+            this.diseaseInfo = {
+                district: district,
+                dialog: true
+            }
         }
     }
 }

@@ -3,20 +3,20 @@
     <v-layout>
       <v-flex>
         <v-dialog
-          v-model="districtInfo.dialog"
+          v-model="diseaseInfo.dialog"
           fullscreen
           hide-overlay
           transition="dialog-bottom-transition"
         >
           <v-toolbar dark color="primary">
-            <v-btn icon dark @click="districtInfo.dialog = false">
+            <v-btn icon dark @click="diseaseInfo.dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
             <v-toolbar-title>Close</v-toolbar-title>
           </v-toolbar>
 
           <v-card class="pa-4 mb-3 text-center">
-            <h3 class="pt-2">{{ districtInfo.region }}</h3>
+            <h3 class="pt-2">{{ diseaseInfo.district.name }}</h3>
             <hr class="grey mx-auto mb-7" width="700" />
 
             <div class="text-right mb-4 pr-10">
@@ -35,7 +35,7 @@
               >
             </div>
 
-            <div v-if="districts.length > 0">
+      <!--      <div v-if="districts.length > 0">
               <v-card
                 class="pa-4 mb-3 mx-10"
                 v-for="district in districts"
@@ -56,15 +56,21 @@
                   </v-flex>
                 </v-layout>
               </v-card>
-            </div>
-            <div v-else>
+            </div> -->
+      <!--      <div v-else>
               <h3 class="red--text pt-10">
-                No Districts to display for {{ districtInfo.region }}
+                No Districts to display for {{ diseaseInfo.district.name }}
               </h3>
-            </div>
+            </div> -->
           </v-card>
         </v-dialog>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script>
+export default {
+    props:["diseaseInfo"]
+}
+</script>
