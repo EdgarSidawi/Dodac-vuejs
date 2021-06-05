@@ -67,8 +67,9 @@ const district = {
             })
         },
         getAllDistricts({ commit }) {
+            commit("LOADING", true)
             axios.get("district").then(res => {
-                console.log(res)
+                commit("LOADING", false)
                 commit("GETALLDISTRICTS", res.data.data)
             })
         }
