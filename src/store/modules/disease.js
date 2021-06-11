@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const disease = {
     namespaced: true,
     
@@ -16,8 +18,9 @@ const disease = {
     },
     actions: {
         getDiseases({ commit }, data) {
-            console.log(data)
-            commit()
+            axios.get(`district/${data}/disease`).then(res => {
+                commit("GETDISEASES", res.data.data) 
+            })
         }
     }
 }
