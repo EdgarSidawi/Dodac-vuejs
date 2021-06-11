@@ -70,7 +70,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
+
 export default {
-    props:["diseaseInfo"]
+    props:["diseaseInfo"],
+    computed:{
+        ...mapGetters("disease", ["diseases", "loading"])
+    }
 }
 </script>
