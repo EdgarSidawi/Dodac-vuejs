@@ -7,6 +7,7 @@ const disease = {
     },
     getters: {
         diseases: (state) => state.diseases,
+        loading: (state) => state.loading
     },
     mutations: {},
     actions: {}
