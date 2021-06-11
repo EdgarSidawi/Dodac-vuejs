@@ -51,12 +51,14 @@ export default {
     },
     methods: {
         ...mapActions("district", ["getAllDistricts"]),
+        ...mapActions("disease", ["getDiseases"]),
 
         showDisease(district){
             this.diseaseInfo = {
                 district: district,
                 dialog: true
             }
+            
         }
     }
 }
