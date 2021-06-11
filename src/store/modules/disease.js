@@ -1,7 +1,10 @@
 const disease = {
     namespaced: true,
     
-    state: {},
+    state: {
+        diseases: [],
+        loading: false,
+    },
     getters: {},
     mutations: {},
     actions: {}
