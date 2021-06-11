@@ -59,6 +59,7 @@ export default {
                 dialog: true
             }
             
+            this.getDiseases(district.id)
         }
     }
 }
