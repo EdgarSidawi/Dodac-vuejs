@@ -42,11 +42,19 @@
                 :key="disease.id"
               >
                 <v-layout row wrap justify-space-between>
-                  <v-flex sm6 xs12 md4>
+                  <v-flex sm6 xs12 md3>
                     <div class="grey--text caption">name</div>
                     <div>{{ disease.name }}</div>
                   </v-flex>
-                  <v-flex sm6 xs12 md4 class="pt-4">
+                  <v-flex sm6 xs12 md3>
+                    <div class="grey--text caption">threshold</div>
+                    <div>{{ disease.threshold }}</div>
+                  </v-flex>
+                  <v-flex sm6 xs12 md3>
+                    <div class="grey--text caption">current</div>
+                    <div>{{ disease.current }}</div>
+                  </v-flex>
+                  <v-flex sm6 xs12 md3 class="pt-4">
                     <v-icon class="blue--text px-2" @click="editD(disease)"
                       >mdi-account-edit</v-icon
                     >
