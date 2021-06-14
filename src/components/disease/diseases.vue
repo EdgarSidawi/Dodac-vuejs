@@ -35,33 +35,33 @@
               >
             </div>
 
-      <!--      <div v-if="districts.length > 0">
+            <div v-if="diseases.length > 0">
               <v-card
                 class="pa-4 mb-3 mx-10"
-                v-for="district in districts"
-                :key="district.id"
+                v-for="disease in diseases"
+                :key="disease.id"
               >
                 <v-layout row wrap justify-space-between>
                   <v-flex sm6 xs12 md4>
                     <div class="grey--text caption">name</div>
-                    <div>{{ district.name }}</div>
+                    <div>{{ disease.name }}</div>
                   </v-flex>
                   <v-flex sm6 xs12 md4 class="pt-4">
-                    <v-icon class="blue--text px-2" @click="editD(district)"
+                    <v-icon class="blue--text px-2" @click="editD(disease)"
                       >mdi-account-edit</v-icon
                     >
-                    <v-icon class="red--text px-2" @click="deleteD(district.id)"
+                    <v-icon class="red--text px-2" @click="deleteD(disease.id)"
                       >mdi-delete</v-icon
                     >
                   </v-flex>
                 </v-layout>
               </v-card>
-            </div> -->
-      <!--      <div v-else>
+            </div> 
+            <div v-else>
               <h3 class="red--text pt-10">
                 No Districts to display for {{ diseaseInfo.district.name }}
               </h3>
-            </div> -->
+            </div> 
           </v-card>
         </v-dialog>
       </v-flex>
@@ -76,6 +76,15 @@ export default {
     props:["diseaseInfo"],
     computed:{
         ...mapGetters("disease", ["diseases", "loading"])
+    },
+    methods:{
+      createD(){},
+      editD(disease){
+        console.log(disease)
+      },
+      deleteD(id){
+        console.log(id)
+      }
     }
 }
 </script>
