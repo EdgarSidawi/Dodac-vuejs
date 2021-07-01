@@ -1,7 +1,7 @@
 <template>
     <nav>
         <v-app-bar class="white" app>
-            <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>
                 <span class="blue--text">D</span>
                 <span class="grey--text">O</span>
