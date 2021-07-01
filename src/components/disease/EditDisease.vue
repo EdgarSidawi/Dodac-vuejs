@@ -44,8 +44,10 @@ export default {
         return {
             form: {
                 id: this.diseaseInf.disease.id,
+                district_id: this.diseaseInf.disease.district_id,
                 name: this.diseaseInf.disease.name,
-                region_id: this.diseaseInf.disease.region_id
+                threshold: this.diseaseInf.disease.threshold,
+                current: this.diseaseInf.disease.current
             },
             notify: false,
         }
@@ -75,7 +77,7 @@ export default {
             }, 2000);
         },
         close(){
-            this.districtInf.dialog = false
+            this.diseaseInf.dialog = false
         }
     },
 }
