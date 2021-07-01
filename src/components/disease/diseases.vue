@@ -74,14 +74,27 @@
         </v-dialog>
       </v-flex>
     </v-layout>
+  
+    <EditDisease/>
+
   </v-container>
 </template>
 
 <script>
+import EditDisease from "./EditDisease"
 import {mapGetters} from "vuex"
 
 export default {
     props:["diseaseInfo"],
+    components:{EditDisease},
+    data(){
+      return {
+        diseaseInf: {
+          disease: "",
+          dialog: false
+        }
+      }
+    },
     computed:{
         ...mapGetters("disease", ["diseases", "loading"])
     },
