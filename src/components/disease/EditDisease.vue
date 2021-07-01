@@ -3,14 +3,14 @@
         <v-layout>
             <v-flex>
                 <v-dialog
-                v-model="districtInf.dialog"
+                v-model="diseaseInf.dialog"
                 persistent
                 max-width="600px"
                 eager
                 >
                 <v-card>
                     <v-card-title class="red text-center mx-auto">
-                    <h3 class="mx-auto white--text text-center">Edit District</h3>
+                    <h3 class="mx-auto white--text text-center">Edit Disease</h3>
                     </v-card-title>
                     <v-card-text>
                     <v-text-field v-model="form.name" label="Region"> </v-text-field>
@@ -39,13 +39,13 @@
 import {mapActions} from "vuex"
 
 export default {
-    props: ["districtInf"],
+    props: ["diseaseInf"],
     data() {
         return {
             form: {
-                id: this.districtInf.district.id,
-                name: this.districtInf.district.name,
-                region_id: this.districtInf.district.region_id
+                id: this.diseaseInf.disease.id,
+                name: this.diseaseInf.disease.name,
+                region_id: this.diseaseInf.disease.region_id
             },
             notify: false,
         }

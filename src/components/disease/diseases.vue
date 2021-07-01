@@ -75,7 +75,7 @@
       </v-flex>
     </v-layout>
   
-    <EditDisease/>
+    <EditDisease v-if="diseaseInf.dialog" :diseaseInf="diseaseInf"/>
 
   </v-container>
 </template>
@@ -101,7 +101,10 @@ export default {
     methods:{
       createD(){},
       editD(disease){
-        console.log(disease)
+        this.diseaseInf = {
+          disease : disease,
+          dialog : true
+        }
       },
       deleteD(id){
         console.log(id)
