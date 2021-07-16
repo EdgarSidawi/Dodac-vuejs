@@ -14,6 +14,8 @@
             </v-card-title>
             <v-card-text>
               <v-text-field v-model="form.name" label="Disease"></v-text-field>
+              <v-text-field v-model="form.current" label="Current"></v-text-field>
+              <v-text-field v-model="form.threshold" label="Threshold"></v-text-field>
             </v-card-text>
             <v-card-actions>
               <h4 v-if="notify" class="green--text ml-16 pl-16">

@@ -76,22 +76,29 @@
     </v-layout>
   
     <EditDisease v-if="diseaseInf.dialog" :diseaseInf="diseaseInf"/>
+    <CreateDisease v-if="createDiseaseInfo.dialog" :createDiseaseInfo="createDiseaseInfo"/>
 
   </v-container>
 </template>
 
 <script>
 import EditDisease from "./EditDisease"
+import CreateDisease from "./CreateDisease.vue"
+
 import {mapGetters} from "vuex"
 
 export default {
     props:["diseaseInfo"],
-    components:{EditDisease},
+    components:{EditDisease, CreateDisease},
     data(){
       return {
         diseaseInf: {
           disease: "",
           dialog: false
+        },
+        createDiseaseInfo: {
+          dialog: false,
+          district_id: null
         }
       }
     },
@@ -99,7 +106,12 @@ export default {
         ...mapGetters("disease", ["diseases", "loading"])
     },
     methods:{
-      createD(){},
+      createD(){
+        this.createDiseaseInfo = {
+          dialog: true,
+          district_id: this.diseaseInfo.district.id
+        }
+      },
       editD(disease){
         this.diseaseInf = {
           disease : disease,
