@@ -37,8 +37,6 @@ const disease = {
         },
         updateDisease({ commit },data){
             axios.put(`district/${data.district_id}/disease/${data.id}`, data.form).then(() => {
-                console.log("data",data)
-                console.log("data.id",data.id)
                 commit("UPDATEDISEASE", data)
            })
         }
