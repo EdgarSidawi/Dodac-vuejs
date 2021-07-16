@@ -26,6 +26,9 @@ const disease = {
                 }
             }
         },
+        CREATEDISEASE(state, payload) {
+            state.diseases.unshift(payload)
+        }
     },
     actions: {
         getDiseases({ commit }, data) {
@@ -39,6 +42,13 @@ const disease = {
             axios.put(`district/${data.district_id}/disease/${data.id}`, data.form).then(() => {
                 commit("UPDATEDISEASE", data)
            })
+        },
+        createDisease({ commit }, data) {
+            axios.post(`district/${data.district_id}/disease`, data.form).then(res => {
+                console.log(res)
+                console.log(res.data.data)
+                commit("CREATEDISEASE", res.data.data)
+            })
         }
     }
 }
