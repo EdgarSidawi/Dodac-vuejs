@@ -124,7 +124,11 @@ export default {
         }
       },
       deleteD(id){
-        console.log(id)
+        this.confirmDelete = {
+          dialog: true,
+          district_id: this.diseaseInfo.district.id,
+          id: id
+        }
       }
     }
 }
