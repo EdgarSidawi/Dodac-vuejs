@@ -45,8 +45,6 @@ const disease = {
         },
         createDisease({ commit }, data) {
             axios.post(`district/${data.district_id}/disease`, data.form).then(res => {
-                console.log(res)
-                console.log(res.data.data)
                 commit("CREATEDISEASE", res.data.data)
             })
         }
