@@ -77,6 +77,7 @@
   
     <EditDisease v-if="diseaseInf.dialog" :diseaseInf="diseaseInf"/>
     <CreateDisease v-if="createDiseaseInfo.dialog" :createDiseaseInfo="createDiseaseInfo"/>
+    <ConfirmDiseaseDelete v-if="confirmDelete.dialog" :confirmDelete="confirmDelete"/>
 
   </v-container>
 </template>
@@ -84,12 +85,13 @@
 <script>
 import EditDisease from "./EditDisease"
 import CreateDisease from "./CreateDisease.vue"
+import ConfirmDiseaseDelete from "./ConfirmDiseaseDelete.vue"
 
 import {mapGetters} from "vuex"
 
 export default {
     props:["diseaseInfo"],
-    components:{EditDisease, CreateDisease},
+    components:{EditDisease, CreateDisease, ConfirmDiseaseDelete},
     data(){
       return {
         diseaseInf: {
