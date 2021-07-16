@@ -45,7 +45,7 @@ export default {
     data() {
         return {
             form: {
-                // id: this.diseaseInf.disease.id,
+                id: this.diseaseInf.disease.id,
                 district_id: this.diseaseInf.disease.district_id,
                 name: this.diseaseInf.disease.name,
                 threshold: this.diseaseInf.disease.threshold,
@@ -73,6 +73,7 @@ export default {
                district_id: this.diseaseInf.disease.district_id 
                }; 
                console.log(data)
+               console.log(this.diseaseInf)
 
             this.updateDisease(data) 
             this.notify =true; 
