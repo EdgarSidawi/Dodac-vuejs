@@ -14,6 +14,8 @@
                     </v-card-title>
                     <v-card-text>
                     <v-text-field v-model="form.name" label="Region"> </v-text-field>
+                    <v-text-field v-model="form.current" label="Current"> </v-text-field>
+                    <v-text-field v-model="form.threshold" label="Threshold"> </v-text-field>
                     </v-card-text>
                     <v-card-actions>
                     <h4 v-if="notify" class="green--text ml-16 pl-16">
@@ -24,14 +26,14 @@
                     <v-btn
                         class="blue white--text"
                         :disabled="disable"
-                        @click="update(districtInf.district.id)"
+                        @click="update(diseaseInf.disease.id)"
                         >Update</v-btn
                     >
                     </v-card-actions>
                 </v-card>
                 </v-dialog>
             </v-flex>
-        </v-layout>
+        </v-layout> 
     </div>
 </template>
 
@@ -43,7 +45,7 @@ export default {
     data() {
         return {
             form: {
-                id: this.diseaseInf.disease.id,
+                // id: this.diseaseInf.disease.id,
                 district_id: this.diseaseInf.disease.district_id,
                 name: this.diseaseInf.disease.name,
                 threshold: this.diseaseInf.disease.threshold,
@@ -54,7 +56,7 @@ export default {
     },
     computed: { 
         disable() { 
-            if (!this.form.name) { 
+            if (!this.form.name || !this.form.threshold || !this.form.current) { 
                 return true; 
                 } else { 
                     return false; 
@@ -62,15 +64,17 @@ export default {
             } 
         },
     methods: {
-        ...mapActions("district", ["updateDistrict"]),
+        ...mapActions("disease", ["updateDisease"]),
 
         update(id){
            var data = { 
                form: this.form, 
                id: id,
-               region_id: this.districtInf.district.region_id 
+               district_id: this.diseaseInf.disease.district_id 
                }; 
-            this.updateDistrict(data); 
+               console.log(data)
+
+            this.updateDisease(data) 
             this.notify =true; 
             setTimeout(() => { 
                 this.notify = false; 

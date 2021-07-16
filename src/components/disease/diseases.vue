@@ -100,11 +100,11 @@ export default {
     },
     methods:{
       createD(){},
-      editD(disease){ console.log(disease)
-        // this.diseaseInf = {
-        //   disease : disease,
-        //   dialog : true
-        // }
+      editD(disease){
+        this.diseaseInf = {
+          disease : disease,
+          dialog : true
+        }
       },
       deleteD(id){
         console.log(id)
