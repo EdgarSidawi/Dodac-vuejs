@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <v-dialog
-          v-model="createDistrictInfo.dialog"
+          v-model="createDiseaseInfo.dialog"
           persistent
           max-width="600px"
           eager
@@ -56,7 +56,7 @@ export default {
 
   computed: {
     disable() {
-      if (!this.form.name) {
+      if (!this.form.name || !this.form.current || !this.form.threshold) {
         return true;
       } else {
         return false;
