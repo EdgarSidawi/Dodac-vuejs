@@ -99,6 +99,11 @@ export default {
         createDiseaseInfo: {
           dialog: false,
           district_id: null
+        },
+        confirmDelete: {
+          dialog: false,
+          district_id: null,
+          id: null
         }
       }
     },
