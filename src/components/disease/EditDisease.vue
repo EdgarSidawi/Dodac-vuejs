@@ -72,8 +72,6 @@ export default {
                id: id,
                district_id: this.diseaseInf.disease.district_id 
                }; 
-               console.log(data)
-               console.log(this.diseaseInf)
 
             this.updateDisease(data) 
             this.notify =true; 
