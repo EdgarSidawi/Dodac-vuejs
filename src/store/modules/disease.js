@@ -28,7 +28,15 @@ const disease = {
         },
         CREATEDISEASE(state, payload) {
             state.diseases.unshift(payload)
-        }
+        },
+        DELETEDISEASE(state, payload) {
+             for (var i in state.diseases) {
+                if (state.diseases[i].id == payload) {
+                    state.diseases.splice(i,1)
+                    break
+                }
+            }
+        },
     },
     actions: {
         getDiseases({ commit }, data) {
@@ -46,6 +54,11 @@ const disease = {
         createDisease({ commit }, data) {
             axios.post(`district/${data.district_id}/disease`, data.form).then(res => {
                 commit("CREATEDISEASE", res.data.data)
+            })
+        },
+        deleteDisease({ commit }, data) {
+            axios.delete(`district/${data.district_id}/disease/${data.id}`).then(() => {
+                commit("DELETEDISEASE",data.id)
             })
         }
     }

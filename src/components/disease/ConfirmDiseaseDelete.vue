@@ -36,13 +36,13 @@ export default {
   methods: {
     ...mapActions("disease", ["deleteDisease"]),
 
-    deleteP(id) { console.log(id)
-    //   var data = {
-    //     region_id: this.confirmDelete.region_id,
-    //     id: id
-    //   };
-    //   this.deleteDistrict(data);
-    //   this.confirmDelete.dialog = false;
+    deleteP(id) { 
+      var data = {
+        district_id: this.confirmDelete.district_id,
+        id: id
+      };
+      this.deleteDisease(data);
+      this.confirmDelete.dialog = false;
     }
   }
 };
