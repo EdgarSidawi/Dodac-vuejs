@@ -6,10 +6,12 @@ const disease = {
     state: {
         diseases: [],
         loading: false,
+        monitor: []
     },
     getters: {
         diseases: (state) => state.diseases,
-        loading: (state) => state.loading
+        loading: (state) => state.loading,
+        monitor: (state) => state.monitor
     },
     mutations: {
         GETDISEASES(state, payload) {
@@ -37,6 +39,9 @@ const disease = {
                 }
             }
         },
+        MONITOR(state, payload) {
+            state.monitor = payload
+        }
     },
     actions: {
         getDiseases({ commit }, data) {
@@ -59,6 +64,12 @@ const disease = {
         deleteDisease({ commit }, data) {
             axios.delete(`district/${data.district_id}/disease/${data.id}`).then(() => {
                 commit("DELETEDISEASE",data.id)
+            })
+        },
+        monitor({ commit }) {
+            axios.get("/disease").then(res => {
+                console.log(res)
+                commit("MONITOR")
             })
         }
     }
