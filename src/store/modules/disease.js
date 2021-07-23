@@ -6,12 +6,12 @@ const disease = {
     state: {
         diseases: [],
         loading: false,
-        monitor: []
+        monitors: []
     },
     getters: {
         diseases: (state) => state.diseases,
         loading: (state) => state.loading,
-        monitor: (state) => state.monitor
+        monitors: (state) => state.monitor
     },
     mutations: {
         GETDISEASES(state, payload) {
@@ -68,8 +68,8 @@ const disease = {
         },
         monitor({ commit }) {
             axios.get("/disease").then(res => {
-                console.log(res)
-                commit("MONITOR")
+                console.log(res.data)
+                commit("MONITOR", res.data)
             })
         }
     }
