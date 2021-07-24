@@ -23,24 +23,31 @@
                         <div>{{ monitor.threshold }}</div>
                     </v-flex>   
                 </v-layout>
-            </v-card>
+            </v-card> dddd {{ monitors }}
+
 
         </v-container>
+                            wwww {{ monitors }}
     </div>
 </template>
 
 <script>
-    import {mapActions,mapGetters} from "vuex"
+    import { mapActions,mapGetters } from 'vuex'
 
     export default {
         methods:{
             ...mapActions("disease", ["monitor"])
         },
-        created(){
+        created(){ 
             this.monitor()
+            console.log("before Monitors: ", this.monitors)
+
+            setTimeout(()=>{
+                console.log("after Monitors: ", this.monitors)
+            }, 5000)
         },
         computed: {
-            ...mapGetters("disease", ["monitor"])
+            ...mapGetters("disease", ["monitors"])
         }
     }
 

@@ -11,7 +11,7 @@ const disease = {
     getters: {
         diseases: (state) => state.diseases,
         loading: (state) => state.loading,
-        monitors: (state) => state.monitor
+        monitors: (state) => state.monitors
     },
     mutations: {
         GETDISEASES(state, payload) {
@@ -40,7 +40,7 @@ const disease = {
             }
         },
         MONITOR(state, payload) {
-            state.monitor = payload
+            state.monitors = payload
         }
     },
     actions: {
