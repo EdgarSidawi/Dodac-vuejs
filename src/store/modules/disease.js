@@ -68,7 +68,6 @@ const disease = {
         },
         monitor({ commit }) {
             axios.get("/disease").then(res => {
-                console.log(res.data)
                 commit("MONITOR", res.data)
             })
         }

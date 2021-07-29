@@ -4,30 +4,29 @@
         <v-divider width="300px" class="mx-auto mb-3"></v-divider>
 
         <v-container>
-            <v-card class="pa-4 mb-3 text-center" v-for="monitor in monitors" :key="monitor.id">
+            <v-card class="pa-4 mb-3 text-center" v-for="monitor in monitors" :key="monitor.id"
+                :style='[monitor.current > monitor.threshold ? {"color": red} : {"color" : green}]'          >
                 <v-layout row wrap>
-                    <v-flex xs6 sm4 md3 lg2>
+                    <v-flex xs6 sm4 md3 lg3>
                         <div class="grey--text caption" small>Disease</div>
                         <div>{{ monitor.name }}</div>
                     </v-flex>
-                    <v-flex xs6 sm4 md3 lg2>
+                    <v-flex xs6 sm4 md3 lg3>
                         <div class="grey--text caption">District</div>
                         <div>{{ monitor.district.name }}</div>
                     </v-flex>
-                    <v-flex xs6 sm4 md3 lg2>
+                    <v-flex xs6 sm4 md3 lg3>
                         <div class="grey--text caption">Current</div>
                         <div>{{ monitor.current }}</div>
                     </v-flex>
-                    <v-flex xs6 sm4 md3 lg2>
+                    <v-flex xs6 sm4 md3 lg3>
                         <div class="grey--text caption">Threshold</div>
                         <div>{{ monitor.threshold }}</div>
                     </v-flex>   
                 </v-layout>
-            </v-card> dddd {{ monitors }}
-
-
+            </v-card> 
         </v-container>
-                            wwww {{ monitors }}
+
     </div>
 </template>
 
@@ -35,19 +34,20 @@
     import { mapActions,mapGetters } from 'vuex'
 
     export default {
+        data(){
+            return {
+                red : "red",
+                green: "green"
+            }
+        },
         methods:{
             ...mapActions("disease", ["monitor"])
         },
         created(){ 
             this.monitor()
-            console.log("before Monitors: ", this.monitors)
-
-            setTimeout(()=>{
-                console.log("after Monitors: ", this.monitors)
-            }, 5000)
         },
         computed: {
-            ...mapGetters("disease", ["monitors"])
+            ...mapGetters("disease", ["monitors"]),
         }
     }
 
