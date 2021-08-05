@@ -30,6 +30,11 @@ export default {
         {text: "Manage Disease", route: "/staff/manageDisease"}
       ]
     }
-  }
+  },
+  created(){ 
+    if(localStorage.getItem('role') !== "Admin"){ 
+      this.$router.push("/") 
+      }
+},
 }
 </script>
