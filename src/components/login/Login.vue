@@ -46,10 +46,16 @@
                                 type="password"
                                 >
                             </v-text-field>
+                            <v-select 
+                                :rules="districtRules"
+                                :items="items" 
+                                v-model="districtInfo.district"
+                                prepend-icon="mdi-city"
+                            ></v-select>
                         </v-card-text>
                         <v-card-actions class="px-10">
                             <v-btn rounded class="blue white--text caption" @click.stop="signIn">
-                            Login
+                            Login {{ districtInfo.district_id }} {{ districtInfo.district }}
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -69,25 +75,64 @@ export default {
                     username:'',
                     password:'',
                 },
+                districtInfo:{
+                    district: '',
+                    district_id: null,
+                },
                 error: '',
                 usernameRules: [ v => !!v || 'Username is required'],
-                passwordRules: [ v => !!v || 'Password is required']
+                passwordRules: [ v => !!v || 'Password is required'],
+                districtRules: [ v => !!v || 'district is required']
             }
         },
         computed: {
             ...mapGetters('auth',['isLoggedIn','errorMessage','isLoading']),
+            ...mapGetters('district',['allDistricts']),
+
+            items() {
+                if(this.allDistricts){
+                    return this.allDistricts.map(item =>{
+                        return item.name
+                    })
+                }else{
+                    return []
+                }
+            },
+            // district_id () {
+            //     if(this.form.district){
+            //         for (var i in this.allDistricts) { 
+            //             if (this.allDistricts[i].name == this.form.district) {
+            //             // this.form.district_id = this.allDistricts[i].id
+            //             return this.allDistricts[i].id 
+            //             } 
+            //         }
+            //     }
+            // }
         },
         methods: {
             ...mapActions('auth',['login']),
+            ...mapActions('district', ['getAllDistricts']),
             signIn(){
-                if(this.form.username === "" || this.form.password === ""){                   
-                    this.error = "username and password cannot be empty!"
+                if(this.form.username === "" || this.form.password === "" || this.districtInfo.district === ""){                   
+                    this.error = "username, password and district cannot be empty!"
 
                 }else{
+                    for (var i in this.allDistricts) { 
+                        if (this.allDistricts[i].name == this.districtInfo.district) {
+                        this.districtInfo.district_id = this.allDistricts[i].id
+                        break 
+                        } 
+                    }
+                    localStorage.setItem('district', this.districtInfo.district)
+                    localStorage.setItem('district_id', this.districtInfo.district_id)
+
                     this.error= ""
-                    this.login(this.form)
+                    this.login(this.form) 
                 }
             }
-        }
+        },
+        created(){ 
+            this.getAllDistricts()
+        },
 }
 </script>
