@@ -35,6 +35,6 @@ export default {
     if(localStorage.getItem('role') !== "Admin"){ 
       this.$router.push("/") 
       }
-},
+  },
 }
 </script>
