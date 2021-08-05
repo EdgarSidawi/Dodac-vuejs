@@ -41,12 +41,28 @@
                 <v-divider></v-divider>
 
                 <v-list-item-group color="yellow lighten-3">
-                        <v-list-item v-for="(link,i) in links" :key="i" router :to="link.route">
+                        <v-list-item router to="/">
                             <v-list-item-icon>
-                                <v-icon>{{ link.icon }}</v-icon>
+                                <v-icon>mdi-account-group</v-icon>
                             </v-list-item-icon>
                             <v-list-item-content>
-                                <v-list-item-title>{{ link.text }} </v-list-item-title>
+                                <v-list-item-title>Patient</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        <v-list-item router to="/staff" v-if="isAdmin">
+                            <v-list-item-icon>
+                                <v-icon>mdi-account</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>Staff</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        <v-list-item router to="/monitor">
+                            <v-list-item-icon>
+                                <v-icon>mdi-chart-bar</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>Realtime Monitoring</v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                 </v-list-item-group>
@@ -77,12 +93,21 @@ export default {
            user:'',
            email:'',
            initials: '',
-           links:[
-               {icon: 'mdi-account-group', text:"Patient", route:"/"},
-               {icon: "mdi-account", text:"Staff", route:"/staff"},
-               {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitor"}
-           ]
+        //    links:[
+        //        {icon: 'mdi-account-group', text:"Patient", route:"/"},
+        //        {icon: "mdi-account", text:"Staff", route:"/staff"},
+        //        {icon: "mdi-chart-bar", text:"Realtime Monitoring", route:"/monitor"}
+        //    ]
        }
+    },
+    computed: {
+        isAdmin(){
+            if (localStorage.getItem('role') === "Admin"){
+                return true
+            } else { 
+                return false 
+                }
+        }
     },
     created() {
        if (this.$store.state.auth.isLoggedIn) {
