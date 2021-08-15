@@ -55,7 +55,7 @@
                         </v-card-text>
                         <v-card-actions class="px-10">
                             <v-btn rounded class="blue white--text caption" @click.stop="signIn">
-                            Login {{ districtInfo.district_id }} {{ districtInfo.district }}
+                            Login 
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -98,20 +98,11 @@ export default {
                     return []
                 }
             },
-            // district_id () {
-            //     if(this.form.district){
-            //         for (var i in this.allDistricts) { 
-            //             if (this.allDistricts[i].name == this.form.district) {
-            //             // this.form.district_id = this.allDistricts[i].id
-            //             return this.allDistricts[i].id 
-            //             } 
-            //         }
-            //     }
-            // }
         },
         methods: {
             ...mapActions('auth',['login']),
             ...mapActions('district', ['getAllDistricts']),
+
             signIn(){
                 if(this.form.username === "" || this.form.password === "" || this.districtInfo.district === ""){                   
                     this.error = "username, password and district cannot be empty!"

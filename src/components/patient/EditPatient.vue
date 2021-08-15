@@ -34,11 +34,18 @@
                             >
                             </v-text-field>
                             <v-text-field
-                                v-if="role == 'Doctor'"
-                                v-model="form.last_disease_diagnosed"
-                                label = "Disease Diagnosed"
+                                :value = "patientInfo.patient.last_disease_diagnosed"
+                                label = "Last Disease Diagnosed"
+                                disabled
                             >
                             </v-text-field>
+                            <v-select 
+                                v-if="role == 'Doctor'"
+                                label = "Current Disease Diagnosed"
+                                :items="items" 
+                                v-model="form.last_disease_diagnosed"
+                                prepend-icon="mdi-virus"
+                            ></v-select>
                         </v-card-text>
                         <v-card-actions>
                             <h4 v-if="notify" class="green--text ml-16 pl-16">Updated Successfully</h4>
@@ -56,7 +63,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 
 export default {
     props:["patientInfo"],
@@ -74,7 +81,11 @@ export default {
             notify: false
         }
     },
+    created(){  
+        this.getDiseases(localStorage.getItem("district_id"))
+    },
     computed: {        
+        ...mapGetters('disease', ['diseases']),
         role(){
             return localStorage.getItem('role')
         },
@@ -87,6 +98,7 @@ export default {
     },
     methods: {
         ...mapActions('patient',['updatePatient']),
+        ...mapActions('disease',['getDiseases']),
 
         close(){
             this.patientInfo.dialog = false,
