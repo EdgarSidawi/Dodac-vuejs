@@ -93,7 +93,8 @@ export default {
             if(!this.form.firstName || !this.form.lastName || !this.form.dateOfBirth || !this.form.allergies) { 
             return true 
             }else{ 
-            return false }
+            return false 
+            }
          }
     },
     methods: {
